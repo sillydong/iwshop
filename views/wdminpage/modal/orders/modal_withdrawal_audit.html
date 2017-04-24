@@ -1,0 +1,45 @@
+{literal}
+<div class="modal fade" id="modal_withdrawal_audit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">返佣审核</h4>
+            </div>
+            <div class="modal-body clearfix">
+                <i class="fa fa-money audit-modal-icon"></i>
+
+                <blockquote>
+
+                    <p><strong>订单编号</strong>：<span class="text-muted text-middle">{{withs.serial}}</span></p>
+
+                    <p><strong>申请时间</strong>：{{withs.rtime}}</p>
+
+                    <p><strong>申请金额</strong>：<span class="label label-success">¥ {{withs.amount}}</span></p>
+
+                    <p><strong>客户姓名</strong>：{{withs.username}}</p>
+
+                    <p><strong>银行名称</strong>：{{withs.bankname}}</p>
+
+                    <p><strong>银行地区</strong>：{{withs.dist}}</p>
+
+                    <p><strong>银行支行</strong>：{{withs.subbranch}}</p>
+
+                    <p><strong>收款账号</strong>：{{withs.cardno}}</p>
+
+
+                </blockquote>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" ng-click="withdrawalCheck('pass')" ng-disabled="loading"><i
+                        class="fa fa-check"></i> 通过
+                </button>
+                <button type="button" class="btn btn-gray" ng-click="withdrawalCheck('reject')" ng-disabled="loading"><i
+                        class="fa fa-close"></i> 拒绝
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{/literal}

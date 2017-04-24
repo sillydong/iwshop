@@ -1,0 +1,223 @@
+/**
+ * Desc
+ * @description Hope You Do Good But Not Evil
+ * @copyright   Copyright 2014-2015 <ycchen@iwshop.cn>
+ * @license     LGPL (http://www.gnu.org/licenses/lgpl.html)
+ * @author      Chenyong Cai <ycchen@iwshop.cn>
+ * @package     Wshop
+ * @link        http://www.iwshop.cn
+*/
+@import "base_class.less";
+@import "base_slider.less";
+@import "base_product_counter.less";
+@import "base_topnav.less";
+
+@navHeight: 37px;
+
+body {
+	.backG(#f7f7f7);
+}
+
+// 顶部筛选
+.subnavBox {
+	width: 100%;
+	background: #fff;
+	display: block;
+	.boxShadow(0.1, 1px, 1px, 2px);
+	margin-bottom: 5px;
+	.subnav {
+		text-align: center;
+		display: block;
+		font-size: 14px;
+		width: 25%;
+		float: left;
+		span {
+			color: #777;
+			height: @navHeight;
+			line-height: @navHeight + 3;
+			display: block;
+			margin: 0 auto;
+			width: 50%;
+			border-bottom: 2px solid #fff;
+		}
+	}
+	.subnav.active span {
+		color: @colorRed;
+		border-bottom: 2px solid @colorRed;
+	}
+}
+
+// 横向列表
+.productListWrap {
+	position: relative;
+	width: 100%;
+	float: left;
+	.productList {
+		background: #FFF;
+		display: block;
+		border-top: 1px dotted #e1e1e1;
+		cursor: pointer;
+		padding-top: 10px;
+		padding-left: 10px;
+		padding-bottom: 10px;
+		img {
+			width: 100%;
+			min-height: 50px;
+			display: block;
+		}
+	}
+}
+
+// 竖向列表
+.productListWrap.hoz {
+	width: 48%;
+	margin: 0 1%;
+	margin-top: 2.5%;
+	margin-bottom: 0;
+	.productList {
+		border-top: none;
+		.borderRadius(3px);
+		.boxShadow(0.1, 1px, 1px, 2px);
+		padding: 0;
+	}
+	.productList section {
+		padding: 5px;
+	}
+	.productList img {
+		float: none;
+		margin-right: 0;
+		display: block;
+		width: 100%;
+	}
+	.title {
+		.fontS();
+		text-align: left;
+		width: 100%;
+		height: 18px !important;
+		display: block;
+		padding-right: 0;
+		overflow: hidden;
+		line-height: 1.5em;
+		color: #555;
+	}
+	.prices {
+		display: block;
+		border-top: 1px dashed #eee;
+		margin-top: 5px;
+		padding-top: 5px;
+		.fontS(14px);
+		i {
+			text-decoration: line-through;
+			padding-left: 5px;
+			color: #ccc;
+			.fontS(12px);
+		}
+	}
+}
+
+.serialCaption {
+	color: #666;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	padding: 5px 0;
+}
+
+.serialCaption.hoz {
+	margin-bottom: 0;
+}
+
+.center {
+	text-align: center;
+}
+
+.emptyTip {
+	line-height: 150px;
+	text-align: center;
+	color: #666;
+}
+
+header.serialCaption {
+	margin: 0 10px;
+	margin-top: 8px;
+	line-height: 26px;
+	position: relative;
+	text-align: center;
+	span {
+		font-size: 14px;
+		position: relative;
+		display: inline-block;
+		background: #f9950b;
+		padding: 0 10px;
+		color: #fff;
+		z-index: 1;
+		a {
+			color: #fff !important;
+		}
+	}
+	&:after {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 50%;
+		width: 100%;
+		height: 1px;
+		background: #f9950b;
+	}
+}
+
+.subcat_wrapp {
+	margin: 0 10px;
+}
+
+.subcat_item.f1 img {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.subcat_item.f2 img {
+	width: 58%;
+	margin: 0 auto;
+}
+
+.subcat_item {
+	width: 25%;
+	padding-top: 8px;
+	display: block;
+	float: left;
+	text-align: center;
+	color: #222;
+}
+
+.subcat_item img {
+	width: 100%;
+	display: block;
+	border-radius: 10000px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.subcat_item span {
+	height: 25px;
+	font-size: 12px;
+	line-height: 25px;
+	color: #555;
+	overflow: hidden;
+}
+
+#categorySugg {
+	text-align: center;
+	padding: 0 2px;
+	padding-top: 15px;
+	.catSugg {
+		display: inline-block;
+		float: left;
+		width: 22%;
+		margin: 1%;
+		padding: 0.5%;
+		font-size: 12px;
+		background: #7fb80e;
+		line-height: 27px;
+		color: #fff;
+		overflow: hidden;
+		.borderRadius(3px);
+	}
+}

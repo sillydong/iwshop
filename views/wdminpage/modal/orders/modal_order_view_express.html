@@ -1,0 +1,26 @@
+{literal}
+<!-- modal-查看订单 -->
+<div class="modal fade" id="modal_order_viewexpress">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">查看物流</h4>
+            </div>
+            <div class="modal-body clearfix" id="modal_content_express_view">
+                <div style="height:100px;line-height: 100px;text-align: center;color: #888;">正在查询中...</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="printAreaExpress()"><span
+                        class="glyphicon glyphicon-print" aria-hidden="true"></span>打印
+                </button>
+                <button ng-show="orderInfo.status == 'delivering'" ng-click="orderConfirm()" type="button"
+                        class="btn btn-success">确认收货
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+{/literal}

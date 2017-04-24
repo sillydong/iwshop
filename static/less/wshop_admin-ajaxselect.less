@@ -1,0 +1,128 @@
+/**
+ * Desc
+ * @description Hope You Do Good But Not Evil
+ * @copyright   Copyright 2014-2015 <ycchen@iwshop.cn>
+ * @license     LGPL (http://www.gnu.org/licenses/lgpl.html)
+ * @author      Chenyong Cai <ycchen@iwshop.cn>
+ * @package     Wshop
+ * @link        http://www.iwshop.cn
+*/
+
+#GmessSelect{
+    max-width:810px;
+    max-height:500px;
+    overflow-y:auto;
+}
+
+.gmBlock{
+    .backG();
+    border: 1px solid #dedede;
+    padding: 0 14px;
+    border-radius: 4px;
+    overflow: hidden;
+    float:left;
+    margin-right:5px;
+    margin-bottom:5px;
+    position:relative;
+    img{
+        display:block;
+        height:125px;
+        width:230px;
+    }
+    p.title{
+        width:230px;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 16px;
+        padding-top: 10px;
+        padding-bottom: 3px;
+        line-height: 24px;
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+    p.desc{
+        width:230px;
+        margin: 5px 0 10px;
+        word-wrap: break-word;
+        word-break: break-all;
+        color: #8d8d8d;
+        line-height: 1.6;
+    }
+    a.sel{
+        position:absolute;
+        display:block;
+        top:0;
+        left:0;
+        bottom:0;
+        right:0;
+        cursor:pointer;
+        &:hover{
+            background:url('../images/icon/iconfont-check-70.png') center no-repeat rgba(255,255,255,.4);
+            background-size:50px;
+        }
+    }
+    &:nth-child(3n){
+        margin-right:0;
+    }
+}
+
+#ProductSelect{
+    max-width:1000px;
+    max-height:500px;
+    border: 1px solid #eee;
+    #pds-catLeft{
+        float:left;
+        width:210px;
+        height:477px;
+        overflow-y:auto;
+    }
+    #pds-pdright{
+        position: relative;
+        padding-top: 50px;
+        #inlists{
+            height:427px;
+            overflow-x:hidden;
+            overflow-y:auto;
+            padding-bottom: 1px solid #eee;
+        }
+        margin-left:210px;
+        width:665px;
+    }
+}
+
+.pdBlock{
+    .backG();
+    border: 1px solid #eee;
+    padding: 10px 14px;
+    overflow: hidden;
+    float:left;
+    position:relative;    
+    margin-right:-1px;
+    margin-bottom:-1px;
+    min-height: 115px;
+    p.title{
+        width:100px;
+        font-size:12px;
+        padding-bottom:3px;
+    }
+    p.prices{
+        text-align:center;
+        width:100px;  
+        font-family: Verdana;
+        color: #E4393C;
+        font-size: 12px !important;
+    }
+    a.sel{
+        position:absolute;
+        display:block;
+        top:0;
+        left:0;
+        bottom:0;
+        right:0;
+        cursor:pointer;
+        &:hover,&.hov{
+            background:url('../images/icon/iconfont-check-70.png') center no-repeat rgba(255,255,255,.4);
+            background-size:50px;
+        }
+    }
+}

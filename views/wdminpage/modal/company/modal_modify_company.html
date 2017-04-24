@@ -1,0 +1,98 @@
+<div class="modal fade" id="modal_modify_company">
+    <div class="modal-dialog" style="width:650px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">编辑代理</h4>
+            </div>
+            <div class="modal-body">
+                <form id="supplier-info">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                                <label>姓名</label>
+                                <input type="text" placeholder="请输入姓名" class="form-control" ng-model="company.name"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                                <label>电话</label>
+                                <input type="text" placeholder="请输入电话" class="form-control" ng-model="company.phone"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label>邮箱</label>
+                                <input type="text" placeholder="请输入邮箱" class="form-control" ng-model="company.email"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class="form-group">
+                                <label>用户编号</label>
+                                <input type="text" placeholder="用户编号" ng-disabled="company.id > 0" class="form-control"
+                                       ng-model="company.uid"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label>级别</label>
+                                <select class="form-control" ng-model="company.gid"
+                                        ng-options="level.id as level.level_name for level in levelList">
+                                    <option value="">请选择分组</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label>返点</label>
+                                <input type="text" placeholder="请输入返点" class="form-control"
+                                       ng-model="company.return_percent"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label>支付宝账号</label>
+                                <input type="text" placeholder="请输入支付宝账号" class="form-control"
+                                       ng-model="company.alipay"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label>银行开户行</label>
+                                <input type="text" placeholder="请输入银行开户行" class="form-control"
+                                       ng-model="company.bank_name"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label>户主姓名</label>
+                                <input type="text" placeholder="请输入银行账户名" class="form-control"
+                                       ng-model="company.bank_personname"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label>银行卡号</label>
+                                <input type="text" placeholder="请输入银行卡号" class="form-control"
+                                       ng-model="company.bank_account"/>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button ng-show="params.verifed==0" type="button" class="btn btn-success" ng-click="saveCompany();">通过
+                </button>
+                <button ng-show="params.verifed==1" type="button" class="btn btn-success" ng-click="saveCompany();">
+                    <i class="fa fa-floppy-o" aria-hidden="true"></i> 保存
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>

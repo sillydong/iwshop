@@ -1,0 +1,1 @@
+<script src="{$docroot}static/script/pageview.min.js"></script>

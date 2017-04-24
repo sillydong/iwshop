@@ -1,0 +1,47 @@
+{literal}
+<div class="modal fade" id="modal_company_rebate_audit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">返佣审核</h4>
+            </div>
+            <div class="modal-body clearfix">
+                <i class="fa fa-money audit-modal-icon"></i>
+
+                <blockquote>
+
+                    <p><strong>订单编号</strong>：<span class="text-muted text-middle">{{rebate.order_serial}}</span></p>
+
+                    <p><strong>下单时间</strong>：{{rebate.order_time}}</p>
+
+                    <p><strong>订单金额</strong>：<span class="label label-success">¥ {{rebate.order_amount}}</span></p>
+
+                    <p><strong>客户姓名</strong>：{{rebate.uname}}</p>
+
+                    <p><strong>代理姓名</strong>：{{rebate.comname}}</p>
+
+                    <p><strong>返佣方式</strong>：{{rebate.rebate_type | cvRebateType}}</p>
+
+                    <p><strong>返佣金额</strong>：<span class="label label-danger">¥ {{rebate.rebate_amount}}</span></p>
+
+                    <p><strong>返佣时间</strong>：<span class="text-muted text-middle">{{rebate.rtime}}</span></p>
+
+                    <p><strong>返佣级别</strong>：{{rebate.rebate_level}}级</p>
+
+
+                </blockquote>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" ng-click="rebateCheck('pass')" ng-disabled="loading"><i
+                        class="fa fa-check"></i> 通过
+                </button>
+                <button type="button" class="btn btn-gray" ng-click="rebateCheck('reject')" ng-disabled="loading"><i
+                        class="fa fa-close"></i> 拒绝
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{/literal}

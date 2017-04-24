@@ -1,0 +1,68 @@
+html, body {
+    position: relative;
+    height: 100%;
+}
+
+body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+
+.swiper-slide .btns-bottom {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 12px 0;
+}
+
+.swiper-slide a {
+    text-decoration: none;
+    color: #014b43;
+    font-size: 12px;
+}
+
+.swiper-slide .btn {
+    display: block;
+    width: 44%;
+    margin: 0 auto;
+    padding: 12px 0;
+    background-color: #ffec33;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.swiper-slide .link {
+    position: absolute;
+    bottom: 0;
+    right: 6%;
+    margin: 0;
+    padding: 12px 0;
+}

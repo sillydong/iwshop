@@ -1,0 +1,2 @@
+--- 首页版块类型
+ALTER TABLE `wshop_settings_section` ADD COLUMN `reltype` varchar(1)  COLLATE utf8_general_ci DEFAULT '0' COMMENT '首页版块类型0：产品分类 展示版块 1：产品列表 展示版块 2:图文消息 展示版块 3:超链接 展示版块 4:广告列表 展示版块' AFTER `banner`;

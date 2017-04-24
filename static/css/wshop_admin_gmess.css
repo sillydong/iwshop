@@ -1,0 +1,90 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2015-4-24, 12:21:38
+    Author     : Administrator
+*/
+#editorContain {
+  padding: 20px;
+  padding-top: 0;
+  padding-right: 0;
+}
+#gmess-listing {
+  padding: 0 10px;
+}
+#gmess-listing .col-xs-4 {
+  padding: 0 5px;
+}
+#gmess-listing .gmessItems .col-xs-4 {
+  padding: 0;
+}
+#gmess-listing .col-xs-6,
+#gmess-listing .col-xs-12 {
+  padding: 0;
+}
+#gmess-listing .gmessItems {
+  margin-bottom: 12px;
+  padding: 12px;
+  border: 1px solid #e7e7eb;
+}
+#gmess-listing .gmessItems h1 {
+  font-size: 16px;
+  color: #222;
+  margin: 0;
+  line-height: 28px;
+}
+#gmess-listing .gmessItems h2 {
+  font-size: 12px;
+  color: #888;
+  margin: 0;
+  line-height: 28px;
+}
+#gmess-listing .gmessItems h3 {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  line-height: 22px;
+  padding-bottom: 12px;
+}
+#gmess-listing .gmessItems .imageThumb {
+  height: 135px;
+  background-image: url('/static/images/test/angelababy.png');
+  background-size: cover;
+  background-position: center;
+  margin: 5px 0;
+}
+#gmess-listing .gmessItems .edit-btn,
+#gmess-listing .gmessItems .delete-btn,
+#gmess-listing .gmessItems .import-btn,
+#gmess-listing .gmessItems .send-btn {
+  background: #f4f4f4;
+  height: 44px;
+  display: block;
+  text-align: center;
+  line-height: 44px;
+  font-size: 16px;
+  color: #888;
+}
+#gmess-listing .gmessItems .edit-btn:hover,
+#gmess-listing .gmessItems .delete-btn:hover,
+#gmess-listing .gmessItems .import-btn:hover,
+#gmess-listing .gmessItems .send-btn:hover {
+  color: #000;
+}
+#gmess-listing .gmessItems .edit-btn,
+#gmess-listing .gmessItems .send-btn {
+  border-right: 1px solid #e7e7eb;
+}
+#gmess-listing .gmessItems .delete-btn {
+  font-size: 14px;
+}
+#gmess-listing .gmessItems .row {
+  margin-left: -12px;
+  margin-right: -12px;
+  margin-bottom: -12px;
+  margin-top: 12px;
+  border-top: 1px solid #e7e7eb;
+}

@@ -1,0 +1,49 @@
+<div class="modal fade" id="modal_export_orders">
+    <div class="modal-dialog" style="width: 450px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">导出订单</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>开始时间</label>
+                            <input type="text" placeholder="点击选择时间" class="form-control" id="stime" value="" />
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>结束时间</label>
+                            <input type="text" placeholder="点击选择时间" class="form-control" id="etime" value="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>订单类型</label>
+                            <select class="form-control" id="otype">
+                                <option value="">全部</option>
+                                <option value="0">未支付</option>
+                                <option value="1">进行中</option>
+                                <option value="8">配送中</option>
+                                <option value="2">已完成</option>
+                                <option value="3">取消中</option>
+                                <option value="4">已取消</option>
+                                <option value="5">已关闭</option>
+                                <option value="6">待评价</option>
+                                <option value="7">已退款</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-success" id="confirm-export">导出</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

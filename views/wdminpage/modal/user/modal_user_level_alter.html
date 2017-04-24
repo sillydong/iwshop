@@ -1,0 +1,57 @@
+<div class="modal fade" id="modal_user_level_alter">
+    <div class="modal-dialog" style="width: 550px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">新增分组</h4>
+            </div>
+            <div class="modal-body clearfix">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label>分组名称</label>
+                            <input type="text" placeholder="请输入分组名称" ng-model="level.level_name" class="form-control"
+                                   value="" autofocus/>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label>积分要求</label>
+                            <input type="text" placeholder="请输入升级积分要求" ng-model="level.level_credit"
+                                   class="form-control" value=""/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label>享受折扣（%）</label>
+                            <input type="text" placeholder="请输入会员享受折扣" ng-model="level.level_discount"
+                                   class="form-control" value="" maxlength="3"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label>积分返比（%）</label>
+                            <input type="text" placeholder="请输入订单积分返比" ng-model="level.level_credit_feed"
+                                   class="form-control" value=""/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label>备注</label>
+                            <textarea class="form-control" ng-model="level.remark"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">添加</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>

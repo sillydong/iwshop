@@ -1,0 +1,87 @@
+<!-- modal-用户编辑 -->
+<div class="modal fade" id="modal_modify_user">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">编辑用户</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                <div class="col-xs-4">
+                        <div class="form-group">
+                            <label>会员卡号</label>
+                            <input type="text" placeholder="请输入会员卡号" ng-model="user.cardno" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label>用户姓名</label>
+                            <input type="text" placeholder="请输入用户姓名" ng-model="user.client_name" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label>用户电话</label>
+                            <div class="form-group">
+                                <label class="sr-only" for="usr-client-phone"></label>
+                                <div class="input-group">
+                                    <div class="input-group-addon" style="padding-right: 8px"><span
+                                            class="glyphicon glyphicon-earphone" aria-hidden="true"></span></div>
+                                    <input type="text" placeholder="请输入用户电话" id="usr-client-phone"
+                                           ng-model="user.client_phone" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="form-group">
+                            <label>性别</label>
+                            <select class="form-control" ng-model="user.client_sex" ng-options="sex.id as sex.name for sex in sexs" ></select>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="form-group">
+                            <label>积分</label>
+                            <input type="text" onclick="this.select()" placeholder="请输入" ng-model="user.client_credit" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label>省份</label>
+                            <input type="text" placeholder="请输入省份" ng-model="user.client_province" class="form-control" name="supp_stime" value="" />
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label>城市</label>
+                            <input type="text" placeholder="请输入城市" ng-model="user.client_city" class="form-control" name="supp_sprice" value="" />
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label>分组</label>
+                            <select class="form-control" ng-model="user.client_level" ng-options="level.id as level.level_name for level in userLevel" >
+                                <option value="">请选择分组</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label>用户备注</label>
+                            <textarea class="form-control" ng-model="user.client_remark" rows="3" name="supp_desc" placeholder="请填写用户备注"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" ng-click="modifyUser($event)">保存</button>
+            </div>
+        </div>
+    </div>
+</div>

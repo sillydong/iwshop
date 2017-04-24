@@ -1,0 +1,350 @@
+/**
+ * Desc
+ * @description Hope You Do Good But Not Evil
+ * @copyright   Copyright 2014-2015 <ycchen@iwshop.cn>
+ * @license     LGPL (http://www.gnu.org/licenses/lgpl.html)
+ * @author      Chenyong Cai <ycchen@iwshop.cn>
+ * @package     Wshop
+ * @link        http://www.iwshop.cn
+*/
+@import "base_class.less";
+@import "base_slider.less";
+@import "base_product_counter.less";
+@import "base_topnav.less";
+@import "base_touchslider.less";
+
+body {
+	.backG(#f7f7f7);
+}
+
+#pd-recoment .pd-box {
+	border-top: 1px solid #eee;
+	background: #fff;
+	padding-top: 10px;
+	padding-right: 10px;
+	.boxShadow(0.05, 1px, 1px, 2px);
+}
+
+#pd-recoment .pd-box a {
+	width: 33.33%;
+	display: block;
+	float: left;
+}
+
+#pd-recoment .pd-box-inner {
+	margin: 10px;
+	margin-right: 0;
+	margin-top: 0;
+	position: relative;
+}
+
+#pd-recoment .pd-box a img {
+	.borderRadius(3px);
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	width: 100%;
+}
+
+#pd-recoment .pd-box a p {
+	color: #777;
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+	padding-top: 8px;
+	height: 1em;
+	line-height: 1em;
+}
+
+#pd-recoment .pd-box a span {
+	text-align: center;
+	font-size: 12px;
+	display: block;
+	margin-top: 3px;
+}
+
+.vpd-title {
+	margin: 0;
+	display: block;
+	position: relative;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 25px;
+	height: 81px;
+	color: #222;
+}
+
+.vpd-subtitle {
+	color: @colorRed;
+	font-size: 12px;
+	line-height: 20px;
+	margin: 0;
+	padding: 3px 0;
+}
+
+// 价格文字样式
+.prices {
+	font-weight: normal;
+	padding: 0;
+	margin: 0;
+	color: @colorRed;
+}
+
+#vpd-content {
+	margin-top: 10px;
+	position: relative;
+	overflow: hidden;
+	border-top: 1px solid #eee;
+	.backG();
+}
+
+#vpd-content.notload {
+	font-size: 12px;
+	color: #666;
+	text-align: center;
+	line-height: 40px;
+	min-height: 40px;
+	border-top: none;
+}
+
+#vpd-content table {
+	width: 100% !important;
+}
+
+#vpd-content img {
+	max-width: 100% !important;
+	height: auto;
+}
+
+.max100 {
+	max-width: 100%;
+}
+
+#vpd-content P {
+	margin: 0;
+}
+
+#vpd-detail-header {
+	.hidden();
+}
+
+// 加入收藏
+.uc-add-like {
+	position: absolute;
+	border-radius: 5px;
+	bottom: 16px;
+	right: 10px;
+	background: url('../images/icon/iconfont-heart-b-16.png') 5px center no-repeat;
+	background-image: -webkit-image-set(url(../images/icon/iconfont-heart-b-16.png) 1x, url(../images/icon/iconfont-heart-b-32.png) 2x);
+	background-size: 16px;
+	border: 1px solid #e4393c;
+	padding: 4px 12px;
+	padding-left: 21px;
+	text-align: center;
+	font-size: 12px;
+	color: #e4393c;
+	overflow: hidden;
+	z-index: 999;
+	text-indent: 3px;
+}
+
+.uc-add-like.fill {
+	background-image: url('../images/icon/iconfont-heart-w-16.png');
+	background-image: -webkit-image-set(url(../images/icon/iconfont-heart-w-16.png) 1x, url(../images/icon/iconfont-heart-w-32.png) 2x);
+	background-color: #e4393c;
+	color: #fff;
+}
+
+.pd-dsc {
+	line-height: 28px;
+	vertical-align: top;
+	margin: 0;
+}
+
+.pd-dsc dt {
+	font-size: 13px;
+	vertical-align: middle;
+	display: inline-block;
+	line-height: 28px;
+	float: left;
+}
+
+.pd-spec-sx {
+	font-size: 12px;
+	line-height: initial;
+	display: inline-block;
+	padding: 4px 6px;
+	border: 1px solid #ccc;
+	color: #aaa;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	float: left;
+}
+
+.pd-spec-sx.enable {
+	color: #666;
+	border: 1px solid #666;
+}
+
+.pd-spec-sx.hover {
+	color: #ff9000;
+	border: 1px solid #ff9000;
+}
+
+.pd-dsc:first-child {
+	padding-top: 0;
+}
+
+.pd-dsc b {
+	font-size: 13px;
+	font-weight: normal;
+}
+
+.pd-dsc .prices {
+	font-size: 16px;
+	font-style: normal;
+}
+
+// 购买栏
+#appCartWrap {
+	padding: 0 10px;
+	padding-right: 43px;
+	background: rgba(238, 238, 238, 0.8);
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 999;
+	// 购物车按钮
+	#toCart {
+		position: absolute;
+		right: 2px;
+		top: 5px;
+		bottom: 0;
+		display: block;
+		height: 45px;
+		width: 45px;
+		background: url(../images/icon/iconfont-cart-28x.png) center no-repeat;
+		background-image: -webkit-image-set(url(../images/icon/iconfont-cart-28x.png) 1x, url(../images/icon/iconfont-cart-56x.png) 2x);
+		background-size: 28px;
+		text-align: right;
+		padding-top: 1px;
+		i {
+			line-height: 20px;
+			height: 20px;
+			width: 20px;
+			display: inline-block;
+			border-radius: 100px;
+			background: #e4393c;
+			font-style: normal;
+			text-align: center;
+			font-family: Verdana;
+			color: #fff;
+		}
+	}
+}
+
+// 加入购物车按钮
+.button {
+	display: inline-block;
+	position: relative;
+	margin: 10px 3px;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 3px;
+	line-height: 34px;
+	text-align: center;
+	display: block;
+	background: #e4393c;
+	font-size: 14px;
+	color: #FFF;
+	.transDuration();
+	&.disable {
+		background: #ddd !important;
+	}
+}
+
+#subscribe-button {
+	margin: 0;
+	float: right;
+	width: 40px;
+	background: #44b549;
+}
+
+#buy-button {
+	margin-right: 115px;
+}
+
+#buy-button.hover {
+	background: #ee5f62;
+}
+
+#addcart-button {
+	width: 100px;
+	float: right;
+	background: #ff9000;
+}
+
+#addcart-button.hover {
+	background: #feb04b;
+}
+
+// end购买栏
+
+#container {
+	position: relative;
+	padding: 10px;
+	background: #FFF;
+	.boxShadow(0.05, 1px, 1px, 2px);
+	border-top: 1px solid #eee;
+}
+
+#slider {
+	border-bottom: 1px solid #eee;
+}
+
+.marketPrice {
+	color: #cdcdcd;
+	text-decoration: line-through;
+	font-style: italic !important;
+	font-size: 14px !important;
+}
+
+#productOffline {
+	color: #777;
+	line-height: 50px;
+	text-align: center;
+	font-size: 16px;
+}
+
+#subscribeTip {
+	padding: 5px;
+	font-size: 12px;
+	line-height: 30px;
+	background: rgba(238, 238, 238, 0.3);
+	overflow: hidden;
+	.zIndex(999);
+	img {
+		float: left;
+		border-radius: 15px;
+		width: 30px;
+		height: 30px;
+		display: block;
+		margin-right: 5px;
+	}
+	.button {
+		font-size: 12px;
+		line-height: 25px;
+		margin-top: 2px;
+	}
+}
+
+.prominfo {
+	b {
+		color: #fff !important;
+		background: #e4393c;
+		margin-right: 5px;
+		padding: 0 1px;
+	}
+	color: #e4393c !important;
+}

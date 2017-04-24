@@ -1,0 +1,42 @@
+<div class="modal fade" id="modal_export_orders">
+    <div class="modal-dialog" style="width: 450px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">导出订单</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>开始时间</label>
+                            <input type="text" placeholder="点击选择时间" id="stime" class="form-control" ng-model="export.start" value=""/>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>结束时间</label>
+                            <input type="text" placeholder="点击选择时间" id="etime" class="form-control" ng-model="export.end" value=""/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>用户分组</label>
+                            <select class="form-control" ng-model="export.group"
+                                    ng-options="level.id as level.level_name for level in userLevel">
+                                <option value="">请选择分组</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-success" id="confirm-export" ng-click="exportUsers()">导出</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

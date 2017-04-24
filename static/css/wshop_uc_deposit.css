@@ -1,0 +1,35 @@
+/**
+ * Desc
+ * @description Hope You Do Good But Not Evil
+ * @copyright   Copyright 2014-2016 <ycchen@iwshop.cn>
+ * @license     LGPL (http://www.gnu.org/licenses/lgpl.html)
+ * @author      Chenyong Cai <ycchen@iwshop.cn>
+ * @package     Wshop
+ * @link        http://www.iwshop.cn
+*/
+body,
+html {
+  height: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+body {
+  overflow-x: hidden;
+  background-color: #fbf9fe;
+}
+.pl0 {
+  padding-left: 0;
+}
+.container {
+  height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.container > div {
+  background-color: #fbf9fe;
+}
+.msg-icon {
+  width: 150px;
+}
+.deposit-label {
+  width: 100px;
+}

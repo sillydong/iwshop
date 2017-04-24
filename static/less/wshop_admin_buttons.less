@@ -1,0 +1,44 @@
+
+.button-set{
+    height: 30px;
+    line-height: 30px;
+    .right();
+    .button{
+        cursor: pointer;
+        display: block;
+        padding: 0 15px;
+        font-size: 14px;
+        height: 30px;
+        line-height: 30px;
+        text-decoration: none;
+        color: #fff;
+        .transitionDuration(.5s);
+        background-color: #0fc966;
+        .right();
+        margin-left:8px; 
+        &:hover{
+            opacity: 0.75;
+        }
+        &.blue{
+            background-color: #09c;
+        }
+        &.red{
+            background-color: #e14747;
+        }
+        &.orange{
+            background-color: #f37d2a;
+        }
+        &.gray{
+            background-color: gray;
+        }
+    }
+    &.l{
+        float:none;
+        .button{
+            float: left;
+            &:first-child{
+                margin-left: 0;
+            }
+        }
+    }
+}

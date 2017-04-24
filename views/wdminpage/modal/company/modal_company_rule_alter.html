@@ -1,0 +1,91 @@
+<div class="modal fade" id="modal_company_rule_alter">
+    <div class="modal-dialog" style="width: 550px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">分销规则</h4>
+            </div>
+            <div class="modal-body clearfix">
+                <div class="col-sm-10">
+
+                    <form class="form-horizontal ng-pristine ng-valid" aria-autocomplete="none" autocomplete="off">
+                        <div class="form-group form-group-sm">
+                            <label class="control-label col-sm-4">规则名称：</label>
+
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control ng-pristine ng-valid ng-not-empty ng-touched"
+                                       ng-model="rule.rule_name" name="shopname" style="width: auto">
+
+                                <div class="help-block">请填写规则名称</div>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-sm">
+                            <label class="control-label col-sm-4" for="appid">返佣级别：</label>
+
+                            <div class="col-sm-8">
+                                <select class="form-control" ng-model="rule.rebate_level">
+                                    <option value="1">第一级</option>
+                                    <option value="2">第二级</option>
+                                    <option value="3">第三级</option>
+                                </select>
+
+                                <div class="help-block">请选择返佣级别</div>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-sm">
+                            <label class="control-label col-sm-4" for="apptoken">代理组别：</label>
+
+                            <div class="col-sm-8">
+
+                                <select class="form-control" ng-model="rule.level_id"
+                                        ng-options="level.id as level.level_name for level in levelList">
+                                    <option value="">请选择分组</option>
+                                </select>
+
+                                <div class="help-block">请选择代理组别</div>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-sm">
+                            <label class="control-label col-sm-4" for="apptoken">返佣方式：</label>
+
+                            <div class="col-sm-8">
+                                <select class="form-control" ng-model="rule.rebate_type">
+                                    <option value="amount">固定金额</option>
+                                    <option value="percent">订单比例</option>
+                                </select>
+
+                                <div class="help-block">请选择返佣方式</div>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-sm">
+                            <label class="control-label col-sm-4" for="apptoken">返佣点数：</label>
+
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control ng-pristine ng-valid ng-empty ng-touched"
+                                       ng-model="rule.rebate_amount">
+
+                                <div class="help-block">请填写返佣点数</div>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-sm">
+                            <label class="control-label col-sm-4" for="apptoken">备注信息：</label>
+
+                            <div class="col-sm-8">
+                                <textarea class="form-control" ng-model="rule.remark"></textarea>
+
+                                <div class="help-block">请填写备注信息</div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="save_rebate_rule">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>

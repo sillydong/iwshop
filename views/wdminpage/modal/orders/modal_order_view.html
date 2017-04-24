@@ -1,0 +1,153 @@
+{literal}
+<!-- modal-查看订单 -->
+<div class="modal fade" id="modal_order_view">
+    <div class="modal-dialog" style="width: 650px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">查看订单</h4>
+            </div>
+            <div class="modal-body clearfix" id="modal_content_order_view">
+
+                <div class="row">
+                    <div class="col-xs-6">
+                        <p>
+                            <b>订单状态：</b><span class="orderstatus {{orderInfo.status}}">{{orderInfo.statusX}}</span>
+                        </p>
+                    </div>
+                    <div class="col-xs-6">
+                        <p>
+                            <b>订单金额：</b><span class="text-danger">&yen;{{orderInfo.order_amount}}</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-6">
+                        <p>
+                            <b>下单时间：</b><span class="font12">{{orderInfo.order_time}}</span>
+                        </p>
+                    </div>
+                    <div class="col-xs-6">
+                        <p ng-show="orderInfo.receive_time != null">
+                            <b>收货时间：</b><span class="font12">{{orderInfo.receive_time}}</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-6">
+                        <p>
+                            <b>订单编号：</b><span class="font12">{{orderInfo.serial_number}}</span>
+                        </p>
+                    </div>
+                    <div class="col-xs-6">
+                        <p ng-show="orderInfo.wepay_serial != null">
+                            <b>支付编号：</b><span class="font12">{{orderInfo.wepay_serial}}</span>
+                        </p>
+                    </div>
+                </div>
+
+                <table class="table table-bordered table-hover table-responsive table-fixed" style="margin: 10px 0;">
+                    <tr>
+                        <th width="280px">商品名称</th>
+                        <th class="text-center">商品规格</th>
+                        <th class="text-center">下单单价</th>
+                        <th class="text-center">下单数量</th>
+                        <th class="text-center">总计</th>
+                    </tr>
+                    <tr ng-repeat="product in orderInfo.products">
+                        <td class="breakTd">{{product.product_name}}</td>
+                        <td class="text-center breakTd">{{product.det_name1}}{{product.det_name2}}</td>
+                        <td class="text-center text-danger">&yen;{{product.product_discount_price}}</td>
+                        <td class="text-center">{{product.product_count}}件</td>
+                        <td class="text-center text-danger">&yen;{{(product.product_discount_price *
+                            product.product_count).toFixed(2)}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">配送费用</td>
+                        <td class="text-center text-danger">&yen;{{orderInfo.order_expfee}}</td>
+                    </tr>
+                </table>
+
+                <div class="row">
+                    <div class="col-xs-6">
+                        <p><b>姓名</b>：{{orderInfo.address.user_name}}</p>
+                    </div>
+                    <div class="col-xs-6">
+                        <p ng-show="orderInfo.send_time != null">
+                            <b>快递公司</b>：{{orderInfo.expressName}}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-6">
+                        <p><b>电话</b>：{{orderInfo.address.tel_number}}</p>
+                    </div>
+                    <div class="col-xs-6" ng-show="orderInfo.send_time != null">
+                        <p><b>快递单号</b>：{{orderInfo.express_code}}</p>
+                    </div>
+                </div>
+
+                <p><b>地址</b>：<span>{{orderInfo.address.address}}</span></p>
+
+                <p><b>邮编</b>：{{orderInfo.address.postal_code}}</p>
+
+                <p><b>配送</b>：{{orderInfo.exptime}}</p>
+
+                <p><b>备注</b>：{{orderInfo.leword}}</p>
+
+                <div ng-show="orderInfo.status == 'payed'" class="row"
+                     style="margin-top: 15px;border-top: 1px solid #dedede;padding-top: 15px;">
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label>快递单号</label>
+                            <input type="text" placeholder="请输入快递单号" ng-model="express_code" class="form-control"
+                                   value="{{express_code}}"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label>快递公司</label>
+                            <select class="form-control" ng-model="express_company"
+                                    ng-options="comp.code as comp.name for comp in express_companys"></select>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="form-group">
+                            <label>配送人员</label>
+                            <select class="form-control" ng-model="express_staff"
+                                    ng-options="comp.openid as comp.name for comp in express_staffs">
+                                <option value="">无配送人员</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="printArea()">
+                    <span class="glyphicon glyphicon-print" aria-hidden="true"></span>打印
+                </button>
+                <button ng-show="!isExprecord && orderInfo.status == 'unpay'" type="button" ng-click="orderPayed()"
+                        class="btn btn-success">
+                    <span class="glyphicon glyphicon-yen" aria-hidden="true"></span>已支付
+                </button>
+                <button ng-show="!isExprecord && orderInfo.status == 'delivering'" id="order-confirm-btn" type="button"
+                        class="btn btn-success">确认收货
+                </button>
+                <button ng-show="!isExprecord && orderInfo.status == 'payed'" ng-click="orderExpress()" type="button"
+                        class="btn btn-success">
+                    <span class="glyphicon glyphicon-send" aria-hidden="true"></span>确认发货
+                </button>
+                <button ng-show="!isExprecord && orderInfo.status == 'payed'" type="button" class="btn btn-default"
+                        ng-click="generateExpressCode()">生成单号
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+{/literal}

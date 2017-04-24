@@ -1,0 +1,53 @@
+<div class="modal fade" id="modal_user_level_alter">
+    <div class="modal-dialog" style="width: 550px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">分销规则</h4>
+            </div>
+            <div class="modal-body clearfix">
+                <div class="col-sm-10">
+
+                    <form class="form-horizontal ng-pristine ng-valid" aria-autocomplete="none" autocomplete="off">
+                        <div class="form-group form-group-sm">
+                            <label class="control-label col-sm-4">分组名称：</label>
+
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control ng-pristine ng-valid ng-not-empty ng-touched"
+                                       ng-model="level.level_name" style="width: auto">
+
+                                <div class="help-block">请填写规则名称</div>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-sm">
+                            <label class="control-label col-sm-4">代理折扣：</label>
+
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control ng-pristine ng-valid ng-not-empty ng-touched"
+                                       ng-model="level.level_discount" style="width: auto">
+
+                                <div class="help-block">请填写代理折扣</div>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-sm">
+                            <label class="control-label col-sm-4">备注信息：</label>
+
+                            <div class="col-sm-8">
+                                <textarea class="form-control" ng-model="level.level_remark"></textarea>
+
+                                <div class="help-block">请填写备注信息</div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="save_level">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>

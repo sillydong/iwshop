@@ -1,0 +1,68 @@
+/**
+ * Desc
+ * @description Hope You Do Good But Not Evil
+ * @copyright   Copyright 2014-2015 <ycchen@iwshop.cn>
+ * @license     LGPL (http://www.gnu.org/licenses/lgpl.html)
+ * @author      Chenyong Cai <ycchen@iwshop.cn>
+ * @package     Wshop
+ * @link        http://www.iwshop.cn
+*/
+
+.listTopcaption{
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    overflow:hidden;
+    .zIndex(999);
+    .holder{
+        padding:0 45px;
+        font-size: 14px;
+        text-align: center;
+        position: relative;
+        background: rgba(238, 238, 238, 0.3);
+        p{
+            height: 45px;
+            font-size: 16px;
+            font-weight: lighter;
+            line-height: 45px;
+            color:#666;
+            margin:0;
+            padding:0;
+            .Elipsis();
+        }
+    }
+}
+.listTopArrow{
+    position:absolute;
+    top:0;
+    left:0;
+    display: block;
+    height:45px;
+    width:45px;
+    background: url(../images/icon/iconfont-angleleft-25x.png) center no-repeat;
+    background-image: -webkit-image-set(url(../images/icon/iconfont-angleleft-25x.png) 1x,url(../images/icon/iconfont-angleleft-50x.png) 2x);
+    background-size: 25px;
+}
+.listTopArrow.home{
+    position:absolute;
+    left: initial;
+    right:0;
+    top:0;
+    bottom:0;
+    display: block;
+    height:45px;
+    width:45px;
+    background: url(../images/icon/iconfont-icontitlehuishouye-30x.png) center no-repeat;
+    background-image: -webkit-image-set(url(../images/icon/iconfont-icontitlehuishouye-30x.png) 1x,url(../images/icon/iconfont-icontitlehuishouye-60x.png) 2x);
+    background-size: 30px;
+}
+.listTopArrow.search{
+    top:10px;
+}
+// 占位
+.TopcaptionPos{
+    .backG();
+    height: 45px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,271 @@
+/*
+ * Copyright (C) 2014 koodo@qq.com.
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301  USA
+ *//* 
+    Created on : 2014-11-28, 23:05:58
+    Author     : Administrator
+*/
+
+body {
+    position: relative;
+    padding:0;
+    margin:0 auto;    
+    font-size: 14px;
+    color: #444;
+    font-family: Microsoft YaHei,Helvetica,STHeiti STXihei,Microsoft JhengHei,Arial;
+    background:url('background.jpg') #f7f7f7;
+    background-size:auto;
+    background-repeat: no-repeat;
+}
+a{
+    cursor:pointer;
+    outline: none;
+}
+img{
+    outline: none;
+    border: none;
+}
+html {
+    padding:0;margin:0;
+}
+label .ltip{
+    font-size: 11pt;
+    color:#777;
+}
+textarea {
+    font-family:'Microsoft Yahei',Tahoma,Helvetica,Arial,sans-serif !important;
+}
+select option{
+    font-size: 8pt;
+}
+a{
+    outline: none;
+    text-decoration: none;
+}
+input{
+    color: #222;
+    text-align: left;
+    font-size: 10pt;
+    outline: none;
+    font-family:'Microsoft Yahei', Tahoma, Helvetica, Arial, sans-serif;
+}
+input[type=text]{
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    width: 100%;
+    display: block;
+}
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+.clearfix { display: inline-table; }
+/* Hides from IE-mac \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* End hide from IE-mac */
+#center{
+    border: 6px solid #e8e8e8;
+    margin:50px auto;
+    width:760px;
+    max-width:760px;
+    background: #fff;
+    background: rgba(255,255,255,0.82);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+#logo{
+    height:90px;
+    background: url(iwshop_logo.jpg) center no-repeat #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-bottom: /*\**/1px solid #e8e8e8\9;
+    background-size: 250px;
+}
+#install-main{
+    padding:30px;
+}
+.button{
+    margin:0 auto;
+    min-width:130px;
+    max-width: 200px;
+    border-radius: 3px;
+    padding:7px 0;
+    text-align: center;
+    display: inline-block;
+    background:#0fc966;
+    font-size: 15px;
+    color:#FFF;
+    transition-duration: .3s;
+}
+.button.green{
+    background:#0fc966;
+}
+.button:hover{
+    opacity:0.7;
+}
+.button.disable{
+    background: #ccc;
+}
+.gs-label {
+    display:block;
+    padding-bottom:7px;
+}
+.gs-text {
+    background: #fff;
+    border:1px solid #d4d4d4;
+    border-left: 2px solid #44b549;
+    padding:1px 5px;
+    margin-bottom:8px;
+    box-shadow:0 1px 3px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+.gs-tip{
+    color:#888;
+    font-size:12px;
+    white-space: nowrap;
+    position: absolute;
+    left:230px;
+    top:33px;
+}
+.gs-text input {
+    float:left;
+    width:100%;
+    display:block;
+    border:none;
+    outline:none;
+    height:25px;
+    font-size:14px;
+    color: #555;
+    margin:0 auto;
+    background: #fff;
+    font-family: Microsoft YaHei,Helvetica,STHeiti STXihei,Microsoft JhengHei,Arial;
+}
+select{
+    padding:3px 0;
+    outline: none;
+    width:100%;
+    display: block;
+    color: #555;
+    font-size:14px;
+    font-family: Microsoft YaHei,Helvetica,STHeiti STXihei,Microsoft JhengHei,Arial;
+    border-top-right-radius:4px;
+    border-bottom-right-radius:4px;
+    border:1px solid #d4d4d4;
+    border-left: 2px solid #44b549;
+    box-shadow:0 1px 3px rgba(0,0,0,0.1);
+}
+.field{
+    width:220px;
+    margin-bottom:15px;
+    position: relative;
+    color:#666;
+}
+#install-main form{
+    display: none;
+}
+#sept0{
+    
+}
+#sept1{
+    
+}
+#sept2{
+/*    min-height:489px;
+    display:none;*/
+}
+#install-goback{
+    display: none;
+}
+#install-btn1{
+    display: none;
+}
+#install-btn2{
+    display: none;
+}
+#install-btn3{
+    display: none;
+}
+.gs-tip1{
+    font-size:12px !important;
+    white-space: nowrap;
+    display: inline;
+    color:#d00 !important;
+}
+#errorinfo{
+    display: none;
+    background: #f37d2a;
+    color: #fff;
+    padding: 10px;
+    line-height:1.8;
+}
+.icon{
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+}
+.left{
+    float:left;
+    padding-right: 25px;
+}
+ul{
+    margin:0;
+    padding:0;
+    padding-bottom: 15px;
+}
+ul li{
+    line-height: 25px;
+    list-style-position: inside;
+}
+.head{
+    font-size: 14px;
+    padding-bottom: 10px;
+}
+#__alert__ {
+    top: 0;
+    color: #fff;
+    position: fixed;
+    padding: 0 40px;
+    background: #0fc966;
+    line-height: 29px;
+    height: 30px;
+    z-index: 9999;
+}
+
+#__alert__.warn {
+    background: #f37d2a;
+}
+
+li{
+    color:#999;
+}
+
+li.ok{
+    color: #00B83F;
+}
+
+li.no{
+    color: red;
+}
+
+li b{
+    font-size: 12px;
+    font-weight: normal;
+    color:#555;
+}

@@ -1,0 +1,80 @@
+html, body {
+    position: relative;
+    height: 100%;
+}
+
+body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+
+.form {
+    position: absolute;
+    top: 40%;
+    width: 100%;
+}
+
+.form > .input-group, .form > .btn-bottom {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.form > .input-group {
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    opacity: .8;
+}
+
+.form > .input-group > input {
+    width: 100%;
+    height: 54px;
+    padding: 0 20px;
+    border: none;
+}
+
+.form .input-group-addon {
+    padding: 0;
+    border: none;
+    background-color: #ffffff;
+}
+
+.form .input-group-addon > a {
+    margin: 0;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-left: 1px solid #004c43;
+    color: #004c43;
+    text-align: center;
+}
+
+.form > .btn-bottom {
+    padding-top: 20px;
+}
+
+a, a:hover, a:focus {
+    display: block;
+    margin-bottom: 20px;
+    padding: 12px 0;
+    background-color: #ffffff;
+    color: #004c43;
+    font-weight: bolder;
+    text-align: center;
+    text-decoration: none;
+    opacity: .8;
+}
+
+a.submit {
+    background-color: #004c43;
+    color: #ffffff;
+    opacity: 1;
+}

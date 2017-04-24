@@ -1,0 +1,36 @@
+#nginx 配置示例
+
+server {
+    listen       80;
+    server_name  localhost;
+    root '/www/iwshop/';
+    charset utf-8;
+    index index.php;
+
+    location ~* .(ico|gif|bmp|jpg|jpeg|png|js|css) {
+        expires 2d;
+    }
+
+    location ~* .(tpl|cache|md|sql|sh|less|log) {
+        expires 2d;
+    }
+
+    location ^~ /config/ {
+        deny all;
+    }
+
+    location ^~ /install/ {
+        deny all;
+    }
+
+    location ~ \.php$ {
+        fastcgi_split_path_info       ^(.+\.php)(/.+)$;
+        fastcgi_pass   unix:/var/run/php5-fpm.sock;
+        fastcgi_index  index.php;
+        include        fastcgi_params;
+    }
+
+    location ~ /\.ht {
+        deny  all;
+    }
+}

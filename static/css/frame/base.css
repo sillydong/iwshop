@@ -1,0 +1,138 @@
+.pheader {
+    padding-bottom: 15px
+}
+
+#SummaryBoard .boardItem {
+    height: 28px;
+    line-height: 28px;
+    font-size: 12px;
+    display: inline-block;
+    margin-right: 5px
+}
+
+.bottombar {
+    text-align: right;
+    border-top: 1px solid #dedede;
+    padding: 4px 15px;
+    background: #fff;
+    margin-bottom: -3px
+}
+
+@-webkit-keyframes rotate {
+    from {
+        -webkit-transform: rotate(0deg)
+    }
+    to {
+        -webkit-transform: rotate(360deg)
+    }
+}
+
+.pd15 {
+    padding: 15px
+}
+
+.button-set {
+    padding: 0;
+    line-height: 0;
+    height: 30px;
+    float: right
+}
+
+.button-set .button {
+    cursor: pointer;
+    display: block;
+    padding: 0 15px;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    text-decoration: none;
+    color: #fff;
+    transition-duration: .5s;
+    -webkit-transition-duration: .5s;
+    -moz-transition-duration: .5s;
+    -o-transition-duration: .5s;
+    background-color: #0fc966;
+    float: right;
+    margin-left: 8px
+}
+
+.button-set .button:hover {
+    opacity: .75
+}
+
+.button-set .button.blue {
+    background-color: #09c
+}
+
+.button-set .button.red {
+    background-color: #e14747
+}
+
+.button-set .button.orange {
+    background-color: #f37d2a
+}
+
+.button-set .button.gray {
+    background-color: gray
+}
+
+.button-set.l {
+    float: none
+}
+
+.button-set.l .button {
+    float: left
+}
+
+.button-set.l .button:first-child {
+    margin-left: 0
+}
+
+.orderstatus {
+    cursor: default
+}
+
+.orderstatus.payed {
+    color: #08c
+}
+
+.orderstatus.refunded, .orderstatus.unpay, .orderstatus.canceled, .orderstatus.closed {
+    color: #888
+}
+
+.orderstatus.received {
+    color: #44b549
+}
+
+.orderstatus.payed {
+    color: #08c
+}
+
+.orderstatus.delivering {
+    color: #ff9000
+}
+
+#__alert__ {
+    top: 0;
+    color: #fff;
+    position: fixed;
+    padding: 0 40px;
+    background: #0fc966;
+    line-height: 29px;
+    height: 30px;
+    z-index: 9999
+}
+
+#__alert__.warn {
+    background: #f37d2a
+}
+
+.EmptyTd {
+    font-size: 14px !important;
+    text-align: center;
+    color: #555
+}
+
+.topRightNavItem {
+    border-left: 1px solid #21a468
+}

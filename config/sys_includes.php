@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * autoload 查找路径
+ */
+$sys_include_paths = array(
+    'hooks/',
+    'controllers/',
+    'controllers/base/',
+    'controllers/Wshop/',
+    'controllers/Wdmin/',
+    'models/',
+    'models/admin/',
+    'models/session/',
+    'models/wechat/',
+    'models/base/',
+    'models/product/',
+    'models/user/',
+    'models/order/',
+    'models/layouts/',
+    'models/session/',
+    'models/company/',
+    'models/smodel/',
+    'models/cache/',
+    'models/wdmin/',
+    'models/notify/',
+    'models/report/',
+    'system/',
+    'lib/',
+    'lib/Smarty/',
+    'lib/Smarty/plugins/',
+    'lib/Smarty/sysplugins/',
+    'lib/barcodegen/',
+    'lib/phpqrcode/',
+    'lib/PHPExcel/Classes/PHPExcel/',
+    'lib/wxAesHelper/',
+    'lib/aliyun-oss/lib/',
+    'plugins/wechat_message/'
+);

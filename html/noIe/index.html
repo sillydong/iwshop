@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>No Ie!</title>
+        <style type="text/css">
+            body{
+                margin:0;
+                padding:0;
+            }
+            img {
+                display: block;
+                border:0;
+            }
+            #c{
+                width:900px;
+                margin:0 auto;
+            }
+            .clear{
+                clear:both;
+                visibility: hidden;
+            }
+            .btn{
+                width:100px;
+                height:100px;
+            }
+            #b{
+                margin:0 auto;
+                width:610px;
+            }
+            .bm{
+                margin:0 10px;
+                display: block;
+                float:left;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="c">
+            <img src="bag1.jpg" alt="noie"/>
+            <div id="b">
+                <a class="bm" href="http://dlsw.baidu.com/sw-search-sp/soft/9d/14744/ChromeStandaloneSetup41.0.2272.89.1426235198.exe"><img src="1.jpg" class="btn" /></a>
+                <a class="bm" href="http://dlsw.baidu.com/sw-search-sp/soft/51/11843/Firefox_V37.0.1.5570_setup.1428373949.exe"><img src="2.jpg" class="btn" /></a>
+                <a class="bm" href="http://dlsw.baidu.com/sw-search-sp/soft/6f/11508/opera_stable_28.0.1750.48_windows.1427092324.exe"><img src="3.jpg" class="btn" /></a>
+                <a class="bm" href="http://dlsw.baidu.com/sw-search-sp/soft/d3/12966/Safari_5.34.57.2.1417745549.exe"><img src="4.jpg" class="btn" /></a>
+                <a class="bm" href="http://dlsw.baidu.com/sw-search-sp/soft/6d/15449/mx_V4.4.4.3000cn_setup.1426214487.exe"><img src="5.jpg" class="btn" /></a>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var c = document.getElementById('c');
+            c.style.marginTop = ((document.documentElement.clientHeight - 500) / 2) + 'px';
+            window.onresize = function() {
+                c.style.marginTop = ((document.documentElement.clientHeight - 500) / 2) + 'px';
+            };
+        </script>
+    </body>
+</html>

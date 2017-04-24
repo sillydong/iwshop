@@ -1,0 +1,57 @@
+/**
+ * Desc
+ * @description Hope You Do Good But Not Evil
+ * @copyright   Copyright 2014-2015 <ycchen@iwshop.cn>
+ * @license     LGPL (http://www.gnu.org/licenses/lgpl.html)
+ * @author      Chenyong Cai <ycchen@iwshop.cn>
+ * @package     Wshop
+ * @link        http://www.iwshop.cn
+*/
+.productCount {
+  width: 82px;
+  display: inline-block;
+  height: 25px;
+  border: 1px solid #eee;
+}
+.productCount .btn {
+  display: block;
+  background: #eee;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  position: relative;
+  float: left;
+  background: url('../images/icon/iconfont-add1-16x.png') center no-repeat #f7f7f7;
+  background-image: -webkit-image-set(url(../images/icon/iconfont-add1-16x.png) 1x, url(../images/icon/iconfont-add1-32x.png) 2x);
+  background-size: 16px;
+}
+.productCountMinus {
+  background-image: url('../images/icon/iconfont-minus-20x.png') !important;
+  background-image: -webkit-image-set(url(../images/icon/iconfont-minus-20x.png) 1x, url(../images/icon/iconfont-minus-40x.png) 2x) !important;
+  background-size: 20px !important;
+  border-right: 1px solid #eee;
+}
+.productCountPlus {
+  border-left: 1px solid #eee;
+}
+.productCountNum {
+  display: block;
+  width: 30px;
+  height: 25px;
+  line-height: 25px;
+  background: #FFF;
+  position: relative;
+  float: left;
+}
+.productCountNum input {
+  outline: none;
+  border: none;
+  display: block;
+  height: 27px;
+  width: 20px;
+  text-align: center;
+  line-height: 25px;
+  background: transparent;
+  margin: 0;
+  padding: 0 5px;
+}

@@ -1,0 +1,206 @@
+/**
+ * Desc
+ * @description Hope You Do Good But Not Evil
+ * @copyright   Copyright 2014-2015 <ycchen@iwshop.cn>
+ * @license     LGPL (http://www.gnu.org/licenses/lgpl.html)
+ * @author      Chenyong Cai <ycchen@iwshop.cn>
+ * @package     Wshop
+ * @link        http://www.iwshop.cn
+*/
+
+@import "base_class.less";
+
+@import "base_slider.less";
+
+@import "base_product_counter.less";
+
+@import "base_topnav.less";
+
+#viewCatLeft{
+    position: relative;
+    background: #f7f7f7;
+    -webkit-overflow-scrolling: touch;
+    overflow-x:hidden;
+    overflow-y:auto;
+    width:26%;
+    float:left;
+    z-index:2;
+}
+
+#viewCatRight{
+    width:74%;
+    background: #222;
+    overflow-x:hidden;
+    overflow-y:auto;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+    background: #fff;
+    float:left;
+    margin-left:0px;
+    padding-top:10px;
+    padding-bottom:10px;
+    z-index:1;
+}
+
+.viewCatTopItem{
+    color:#555;
+    font-size:14px;
+    display:block;
+    padding:0 8px;
+    line-height:38px;
+    border-bottom: 1px solid #eee;
+    cursor:pointer;
+}
+
+.viewCatTopItem.hov{
+    font-weight: lighter;
+    color:#f9950b;
+    background: #fff;
+}
+
+.subcat_caption{
+    color:#666;
+    font-size:14px;
+    border-bottom:1px solid #f9950b;
+    margin-bottom:5px;
+    span{
+        .backG(#f9950b);
+        color:#fff;
+        display:inline-block;
+        padding:2px 6px;
+    }
+}
+
+// 白色透明遮罩层
+#whiteWrap{
+    position: absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    background: #fff;
+}
+
+.font12{
+    font-size:12px !important;
+}
+
+// 横向列表
+.productListWrap{
+    position:relative;
+    width: 100%;
+    float:left;
+    .productList{
+        background: #FFF;
+        display: block;
+        border-top: 1px dotted #e1e1e1;
+        cursor: pointer;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-bottom: 10px;
+        img{
+            width:100%;
+            min-height: 50px;
+            display: block; 
+        }
+    }
+}
+
+// 竖向列表
+.productListWrap.hoz{
+    width:47%;
+    margin:0 1.5%;
+    margin-bottom:5px;
+    .productList{
+        border-top:none;
+        .borderRadius(3px);
+        border:1px solid #eee;
+        padding: 0;
+    }
+    .productList section{
+        padding:5px;
+    }
+    .productList img{
+        float:none;
+        margin-right:0;
+        display: block; 
+        width:100%;
+    }
+    .title{    
+        .fontS();
+        text-align:left;
+        width:100%;
+        height:18px !important;
+        display: block;
+        padding-right:0;
+        overflow: hidden;
+        line-height:1.5em;
+        color:#555;
+    }
+    .prices{
+        display: block;
+        border-top:1px dashed #eee;
+        margin-top:5px;
+        padding-top:5px;
+        .fontS(12px);
+        text-align: center;
+    }
+}
+
+.subcat_wrapp{
+    margin:0 10px;
+}
+
+.subcat_item.f1 img{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.subcat_item.f2 img{
+    width: 58%;
+    margin: 0 auto;
+}
+
+.subcat_item{
+    width:29.33%;
+    margin:2%;
+    margin-bottom:0;
+    padding-bottom:5px;
+    display: block;
+    float:left;
+    text-align: center;
+    color:#222;
+}
+
+.subcat_item img{
+    width: 100%;
+    display: block;
+    border-radius: 10000px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.subcat_item span{
+    height:25px;
+    font-size: 14px;
+    line-height: 25px;
+    color:#555;
+    overflow:hidden;
+}
+
+.subcatBrand{
+    display: block;
+    float:left;
+    margin-bottom:8px;
+    border:1px solid #eee;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.05);
+    img{
+        max-width:100%;
+        display: block;
+    }
+    &:nth-child(2n-1){
+        margin-right: 2px;
+    }
+    &:nth-child(2n){
+        margin-left: 4px;
+    }
+}

@@ -1,0 +1,157 @@
+{literal}
+<!-- modal-查看订单 -->
+<div class="modal fade" id="modal_order_view">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">查看订单</h4>
+            </div>
+            <div class="modal-body clearfix">
+
+                <div class="row">
+                    <div class="col-xs-6">
+                        <p>
+                            <b>订单状态：</b><span class="orderstatus {{orderInfo.status}}">{{orderInfo.statusX}}</span>
+                        </p>
+                    </div>
+                    <div class="col-xs-6">
+                        <p>
+                            <b>订单金额：</b><span class="text-danger">&yen;{{orderInfo.order_amount}}</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-6">
+                        <p>
+                            <b>下单时间：</b><span class="font12">{{orderInfo.order_time}}</span>
+                        </p>
+                    </div>
+                    <div class="col-xs-6">
+                        <p ng-show="orderInfo.receive_time != null">
+                            <b>收货时间：</b><span class="font12">{{orderInfo.receive_time}}</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-6">
+                        <p>
+                            <b>订单编号：</b><span class="font12">{{orderInfo.serial_number}}</span>
+                        </p>
+                    </div>
+                    <div class="col-xs-6">
+                        <p ng-show="orderInfo.wepay_serial != null">
+                            <b>支付编号：</b><span class="font12">{{orderInfo.wepay_serial}}</span>
+                        </p>
+                    </div>
+                </div>
+
+                <table class="table table-bordered table-hover table-responsive" style="margin: 10px 0;">
+                    <tr>
+                        <th>商品名称</th>
+                        <th class="text-center">商品规格</th>
+                        <th class="text-center">下单单价</th>
+                        <th class="text-center">下单数量</th>
+                        <th class="text-center" width="92px">退款数量</th>
+                    </tr>
+                    <tr ng-repeat="product in orderInfo.products">
+                        <td class="breakTd">{{product.product_name}}</td>
+                        <td class="text-center breakTd">{{product.det_name1}}{{product.det_name2}}</td>
+                        <td class="text-center text-danger">&yen;{{product.product_discount_price}}</td>
+                        <td class="text-center">{{product.product_count}}件</td>
+                        <td class="text-center">
+                            <input type="text" placeholder="输入数量" onclick="this.select()"
+                                   class="form-control text-center input-sm refund-input"
+                                   ng-keyup="inputChange($event)"
+                                   data-id="{{product.detail_id}}"
+                                   data-price="{{product.product_discount_price}}"
+                                   data-count="{{product.product_count - product.refunded}}"
+                                   data-phid="{{product.phid}}"
+                                   data-pdid="{{product.product_id}}"
+                            />
+                        </td>
+                    </tr>
+                </table>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <p>姓名：{{orderInfo.address.user_name}}</p>
+                    </div>
+                    <div class="col-xs-6">
+                        <p ng-show="orderInfo.send_time != null">快递公司：{{orderInfo.expressName}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <p>电话：{{orderInfo.address.tel_number}}</p>
+                    </div>
+                    <div class="col-xs-6" ng-show="orderInfo.send_time != null">
+                        <p>快递单号：<span class="font12">{{orderInfo.express_code}}</span></p>
+                    </div>
+                </div>
+                <p>地址：{{orderInfo.address.address}}</p>
+
+                <p>邮编：{{orderInfo.address.postal_code}}</p>
+
+                <p>配送：{{orderInfo.exptime}}</p>
+
+                <p>备注：{{orderInfo.leword}}</p>
+
+                <div ng-show="orderInfo.status == 'payed'" class="row"
+                     style="margin-top: 15px;border-top: 1px solid #dedede;padding-top: 15px;">
+                    <div class="col-xs-8">
+                        <div class="form-group">
+                            <label>快递单号</label>
+                            <input type="text" placeholder="请输入快递单号" ng-model="express_code" class="form-control"
+                                   value="{{express_code}}"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label>快递公司</label>
+                            <select class="form-control" ng-model="express_company"
+                                    ng-options="comp.code as comp.name for comp in express_companys"></select>
+                        </div>
+                    </div>
+                </div>
+                <div ng-show="orderInfo.status == 'canceled' && orderInfo.wepay_serial != '' && refund_amount > 0"
+                     class="row"
+                     style="margin-top: 15px;border-top: 1px solid #dedede;padding-top: 15px;">
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label>可退款金额 <b class="text-success">&yen;{{refund_amount}}</b></label>
+                            <input type="text" placeholder="请输入退款金额" onclick="this.select()" ng-model="refunding_amount"
+                                   readonly
+                                   class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label>退款方式</label>
+                            <select class="form-control" ng-model="refund_type">
+                                <option value="0">原路返回</option>
+                                <option value="1">人工处理</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button ng-show="orderInfo.status == 'canceled' && orderInfo.wepay_serial != '' && refunding_amount > 0"
+                        type="button" ng-click="orderRefund($event)"
+                        class="btn btn-success">确认退款
+                </button>
+                <button ng-show="orderInfo.status == 'delivering'" type="button" ng-click="orderConfirm()"
+                        class="btn btn-success">确认收货
+                </button>
+                <button ng-show="orderInfo.status == 'payed'" id="order-express-btn" type="button"
+                        class="btn btn-success">确认发货
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+{/literal}

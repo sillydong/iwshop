@@ -1,0 +1,3 @@
+<FilesMatch "\.(tpl|cache|md|sql|sh|less|log|systemtest|system|model|controller|views|plugins|config)$">
+    Require all denied
+</FilesMatch>

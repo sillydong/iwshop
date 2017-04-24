@@ -1,0 +1,138 @@
+/**
+ * Desc
+ * @description Hope You Do Good But Not Evil
+ * @copyright   Copyright 2014-2015 <ycchen@iwshop.cn>
+ * @license     LGPL (http://www.gnu.org/licenses/lgpl.html)
+ * @author      Chenyong Cai <ycchen@iwshop.cn>
+ * @package     Wshop
+ * @link        http://www.iwshop.cn
+*/
+
+@colorBase: #44b549; 
+
+#menuW{
+    border:1px solid #dedede;
+    margin-top:20px;
+    .l{
+        width:250px;
+        float:left;
+        .menutop{
+            position:relative;
+            display:block;
+            padding: 0 12px;
+            line-height:32px;
+            cursor:pointer;
+            border-bottom:1px solid #dedede;
+            border-left:1px solid @colorBase;
+            margin-left:-1px;
+            &:hover,&.hov{
+                background-color:#fafafa;
+                .del,.sadd{
+                    display:block;
+                }
+            }
+        }
+        .menusubs{
+            padding:0;
+            margin:0;
+            max-height:151px;
+            li{
+                list-style-type:none;
+                line-height:30px;
+                position:relative;
+                display:block;
+                cursor:pointer;
+                background: url('../images/icon/dot.png') 14px center no-repeat #fff;
+                background-size:6px;
+                padding-left: 30px;
+                padding-right: 12px;
+                border-bottom:1px solid #dedede;
+                &:hover,&.hov{
+                    background-color:#fafafa;
+                    .del{
+                        display:block;
+                    }
+                }
+                .del{
+                    top:8px;
+                }
+            }
+        }
+        .del{
+            display:none;
+            position:absolute;
+            width:15px;
+            height:15px;
+            right:12px;
+            top:10px;
+            background: url("../images/icon/base_z231ecc.png") 0 -3543px no-repeat;
+            &:hover{
+                background: url('../images/icon/base_z231ecc.png') 0 -3567px no-repeat;
+            }
+        }
+        .sadd{
+            display:none;
+            position:absolute;
+            width:16px;
+            height:16px;
+            right:35px;
+            top:9px;
+            background: url("../images/icon/base_z231ecc.png") 0 -3447px no-repeat;
+            &:hover{
+                background: url('../images/icon/base_z231ecc.png') 0 -3471px no-repeat;
+            }
+        }
+    }
+    .r{
+        margin-left:250px;
+        border-left: 1px solid #dedede;
+        overflow:hidden;
+    }
+    .tbar{
+        position:relative;
+        line-height:38px;
+        padding: 0 12px;
+        background-color: #fafafa;
+        border-bottom: 1px solid #dedede;
+        .add{
+            float:right;
+            display:block;
+            width:16px;
+            height:16px;
+            margin-top:12px;
+            background: url('../images/icon/base_z231ecc.png') 0 -4282px no-repeat;
+            &:hover{
+                background: url('../images/icon/base_z231ecc.png') 0 -4308px no-repeat;
+            }
+        }
+    }
+}
+
+#addmenu1{
+    display:none;
+    width:250px;
+    .in{
+        padding-bottom:10px;
+    }
+}
+
+#menuX{
+    height: 551px;
+}
+
+#ntright{
+    padding:3px;
+    min-height: 551px;position:relative;
+    .acts{
+        display:none;
+    }
+}
+
+#reltype{
+    width:48%;float:left;
+}
+
+#cattype{
+    display:none;
+    width:48%;float:right;
+}

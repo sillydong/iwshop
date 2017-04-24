@@ -1,0 +1,92 @@
+.touchslider {
+    position: relative;
+    background: #eee;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3)
+}
+
+.touchslider .touchslider-item {
+    overflow: hidden
+}
+
+.touchslider .touchslider-item img {
+    display: block
+}
+
+.touchslider .touchslider-nav {
+    text-align: center;
+    margin-top: 16px
+}
+
+.touchslider .touchslider-nav a {
+    cursor: pointer;
+    color: #000
+}
+
+.touchslider .touchslider-nav a:active {
+    background: #689db2
+}
+
+.touchslider-nav {
+    font: bold 16px/16px Georgia
+}
+
+.touchslider .touchslider-prev {
+    position: relative;
+    margin-right: 16px;
+    height: 16px;
+    background: #fff;
+    width: 100px;
+    display: inline-block;
+    padding: 0 0 0 10px;
+    -webkit-border-radius: 12px 0 0 12px;
+    border-radius: 12px 0 0 12px
+}
+
+.touchslider .touchslider-next {
+    position: relative;
+    margin-left: 16px;
+    width: 100px;
+    height: 16px;
+    background: #fff;
+    display: inline-block;
+    -webkit-border-radius: 0 12px 12px 0;
+    border-radius: 0 12px 12px 0
+}
+
+.touchslider .touchslider-next-in {
+    position: absolute;
+    right: 10px
+}
+
+.touchslider .touchslider-prev-in {
+    position: absolute;
+    left: 10px
+}
+
+.touchslider .touchslider-nav-item {
+    background: #eaeaea;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin: 0 4px;
+    text-indent: -999em;
+    border-radius: 6px;
+    cursor: pointer;
+    -webkit-transition: background .5s, opacity .5s;
+    -moz-transition: background .5s, opacity .5s;
+    transition: background .5s, opacity .5s
+}
+
+.touchslider .touchslider-nav-item-current {
+    background: #ff9000
+}
+
+.touchslider-nav {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    text-align: center
+}

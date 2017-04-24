@@ -1,0 +1,92 @@
+/**
+ * Desc
+ * @description Hope You Do Good But Not Evil
+ * @copyright   Copyright 2014-2015 <ycchen@iwshop.cn>
+ * @license     LGPL (http://www.gnu.org/licenses/lgpl.html)
+ * @author      Chenyong Cai <ycchen@iwshop.cn>
+ * @package     Wshop
+ * @link        http://www.iwshop.cn
+ *//* 
+    Created on : 2015-3-7, 12:50:08
+    Author     : Administrator
+*/
+
+#sendbox{
+    text-align:right;
+    .backG();
+    border-top:1px solid #dedede;
+    #tarea{
+        overflow:hidden;
+        padding:0 15px;
+        textarea{
+            display:block;
+            text-align:left;
+            width:99.5%;
+            border:none;
+            //background:#f7f7f7;
+            font-size:14px;
+            margin:15px auto;
+        }
+    }
+    #btnbar{
+        border-top:1px solid #dedede;
+        padding:8px 15px;
+        .backG(#f7f7f7);
+        #sendbtn{
+            .backG();
+            .borderR(100px);
+            text-align:center;
+            display:inline-block;
+            padding:2px 25px;
+            border:1px solid #dedede;
+            &:hover{
+                border-color:#44b549;
+                background:#44b549;
+                color:#fff;
+            }
+        }
+    }
+}
+#mess-session{
+    background:#f7f7f7;
+    overflow:auto;
+    .messG{
+        position:relative;
+        margin:12px;
+        img{
+            top:0;
+            left:0;
+            position:absolute;
+            width:39px;
+            height:39px;
+            .borderR(100px);
+            display:block;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+        }
+        .messC{
+            float:left;
+            .borderR(20px);
+            .backG();
+            padding:10px;
+            margin-left:48px;
+        }
+        &.self{
+            .messC{
+                float:right;
+                color:#fff;
+                margin-right:48px;
+                .backG(#44b549);
+            }
+            img {
+                left:auto;
+                right:0;
+            }
+        }
+    }
+    .messTime{
+        color:#888;
+        font-size:12px;
+        text-align:center;
+        padding-top:10px;
+    }
+}
