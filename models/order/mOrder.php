@@ -75,7 +75,7 @@ class mOrder extends Model {
                     $orderBalance = floatval($uinfo->balance);
                 }
                 // 减余额
-                $this->User->mantUserBalance($orderBalance, $uinfo->uid, $type = User::MANT_BALANCE_DIS);
+                $this->User->mantUserBalance($orderBalance, $uinfo->uid,'default' ,$type = User::MANT_BALANCE_DIS);
             } else {
                 $orderBalance = 0.00;
             }

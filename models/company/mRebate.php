@@ -38,7 +38,7 @@ class mRebate extends Model
             if ($rebate && $rebate['status'] == 'wait') {
                 $this->loadModel('User');
                 // 增加余额
-                $this->User->mantUserBalance($rebate['rebate_amount'], $rebate['comid'], User::MANT_BALANCE_ADD);
+                $this->User->mantUserBalance($rebate['rebate_amount'], $rebate['comid'],'rebate', User::MANT_BALANCE_ADD);
                 // 更新状态
                 if ($this->updateStatus($id, 'pass')) {
                     return true;

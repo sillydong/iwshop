@@ -83,7 +83,7 @@ class iPayment extends ControllerShop {
                     ->where("deposit_serial = '$serial'")->exec()
                 ) {
                     // 增加用户余额
-                    $this->User->mantUserBalance($deposit['amount'], $uid);
+                    $this->User->mantUserBalance($deposit['amount'], $uid,'deposit');
                     $this->Db->transcommit();
                     // 执行钩子程序
                     (new HookDeposit($this))->deal([

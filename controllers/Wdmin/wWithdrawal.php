@@ -57,7 +57,7 @@ class wWithdrawal extends ControllerAdmin {
                     $amount = doubleval($data['amount']);
                     if ($amount > 0) {
                         // 操作用户余额
-                        if ($this->User->mantUserBalance($amount, $data['uid'], User::MANT_BALANCE_DIS)) {
+                        if ($this->User->mantUserBalance($amount, $data['uid'],'withdrawal', User::MANT_BALANCE_DIS)) {
                             // 更新审核单
                             $this->Dao->update(TABLE_WITHDRAWAL_ORDER)->set([
                                 'status' => OrderWithdrawalStatus::pass

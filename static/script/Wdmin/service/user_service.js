@@ -99,6 +99,26 @@ services.factory('User', ['$http', function ($http) {
             }).error(function (ret) {
                 _process_error(ret);
             });
+        },
+        /**
+         * 获取用户余额记录
+         */
+        getUserBalanceRecord:function(p){
+            return $http.get('?/wUser/getUserBalanceRecord/',{
+                params:p
+            }).error(function(ret){
+                _process_error(ret);
+            });
+        },
+        /**
+         * 获取用户积分记录
+         */
+        getUserCreditRecord:function(p){
+            return $http.get('?/wUser/getUserCreditRecord/',{
+                params:p
+            }).error(function(ret){
+                _process_error(ret);
+            })
         }
     };
 }]);

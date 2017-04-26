@@ -9,7 +9,8 @@
  * @package     Wshop
  * @link        http://www.iwshop.cn
  */
-class User extends Model {
+class User extends Model
+{
 
     const MANT_BALANCE_ADD = '+';
     const MANT_BALANCE_DIS = '-';
@@ -18,8 +19,8 @@ class User extends Model {
      * 删除用户
      * @param type $userId
      */
-    public function deleteUser($userId) {
-
+    public function deleteUser($userId)
+    {
     }
 
     /**
@@ -27,15 +28,16 @@ class User extends Model {
      * @param type $userId
      * @param type $modifyData
      */
-    public function modifyUser($userId, $modifyData = array()) {
-
+    public function modifyUser($userId, $modifyData = array())
+    {
     }
 
     /**
      * 创建用户
      * @param type $userData
      */
-    public function createUser($userData = array()) {
+    public function createUser($userData = array())
+    {
 
         if (!isset($userData['client_joindate'])) {
             $userData['client_joindate'] = 'NOW()';
@@ -48,7 +50,6 @@ class User extends Model {
         return $this->Dao->insert(TABLE_USER, array_keys($userData))
             ->values(array_values($userData))
             ->exec();
-
     }
 
     /**
@@ -56,12 +57,14 @@ class User extends Model {
      * @param type $sexInt
      * @return string
      */
-    private function wechatSexConv($sexInt) {
+    private function wechatSexConv($sexInt)
+    {
         $sex_arr = array(
             'NULL',
             "m",
-            "f"
+            "f",
         );
+
         return $sex_arr[($sexInt ? $sexInt : 0)];
     }
 
@@ -70,7 +73,8 @@ class User extends Model {
      * @param type $openId
      * @return type
      */
-    public function getUserInfoByOpenId($openId = false) {
+    public function getUserInfoByOpenId($openId = false)
+    {
         if (!$openId) {
             $openId = $this->Session->getOpenID();
         }
@@ -86,7 +90,8 @@ class User extends Model {
      * @param type $uid
      * @return <object>
      */
-    public function getUserInfoRaw($uid = false, $cache = true) {
+    public function getUserInfoRaw($uid = false, $cache = true)
+    {
         if (!$uid) {
             $uid = $this->Session->getUID();
         }
@@ -95,6 +100,7 @@ class User extends Model {
         } else {
             $userInfosq = $this->Db->getOneRow("SELECT * from clients WHERE client_id = $uid;", $cache);
         }
+
         return $userInfosq;
     }
 
@@ -104,9 +110,10 @@ class User extends Model {
      * @return <object>
      * @deprecated
      */
-    public function getUserInfoFull($uid) {
+    public function getUserInfoFull($uid)
+    {
         $SQL
-                    = "SELECT
+            = "SELECT
                 cl.*, cl.client_id AS cid,
                 cus.`name` AS `company_name`,
                 (
@@ -123,6 +130,7 @@ class User extends Model {
         WHERE
                 cl.client_id = $uid;";
         $userInfosq = $this->Db->getOneRow($SQL);
+
         return $userInfosq;
     }
 
@@ -131,7 +139,8 @@ class User extends Model {
      * @param int $uid
      * @return boolean
      */
-    public function getCredit($uid, $cache = false) {
+    public function getCredit($uid, $cache = false)
+    {
         if ($uid > 0) {
             return $this->Dao->select('client_credit')
                 ->from(TABLE_USER)
@@ -148,21 +157,24 @@ class User extends Model {
      * @param int $credit 设置的积分数额
      * @return boolean
      */
-    public function setCredit($uid, $credit, $remark = '开卡赠送积分') {
+    public function setCredit($uid, $credit, $remark = '开卡赠送积分')
+    {
         $this->loadModel('UserCredit');
         if ($uid > 0 && $credit > 0) {
             $oldCredit = $this->getCredit($uid, false);
-            $diff      = $credit - $oldCredit;
-            $result    = $this->Dao->update(TABLE_USER)
+            $diff = $credit - $oldCredit;
+            $result = $this->Dao->update(TABLE_USER)
                 ->set(array('client_credit' => $credit))
                 ->where("client_id = $uid")
                 ->exec();
             if ($result) {
                 // success
                 $this->UserCredit->record($uid, $diff, 0, 0, $remark);
+
                 return true;
             } else {
                 $this->log("积分操作失败: " . $this->Db->getErrorInfo());
+
                 return false;
             }
         } else {
@@ -177,7 +189,8 @@ class User extends Model {
      * @param $relid
      * @param $reltype
      */
-    public function addCredit($uid, $credit, $relid = 0, $reltype = 0) {
+    public function addCredit($uid, $credit, $relid = 0, $reltype = 0)
+    {
         $this->loadModel('UserCredit');
         if ($uid > 0 && $credit > 0) {
             $this->Db->transtart();
@@ -185,10 +198,12 @@ class User extends Model {
                 $this->UserCredit->add($uid, $credit);
                 $this->UserCredit->record($uid, $credit, $reltype, $relid, '订单赠送积分' . $credit);
                 $this->Db->transcommit();
+
                 return true;
             } catch (Exception $ex) {
                 $this->Db->transrollback();
                 Util::log("积分操作失败: " . $ex->getMessage());
+
                 return false;
             }
         } else {
@@ -201,7 +216,8 @@ class User extends Model {
      * @param type $uid
      * @return <object>
      */
-    public function getUserInfo($uid = false) {
+    public function getUserInfo($uid = false)
+    {
         if (!$uid) {
             $uid = $this->getUID();
         }
@@ -211,13 +227,14 @@ class User extends Model {
             ->where("cs.client_id = $uid;")
             ->getOneRow();
         if ($userInfo) {
-            $info           = new stdClass();
-            $info->uid      = intval($userInfo['client_id']);
-            $info->uhead    = $userInfo['client_head'] == '' ? $this->root . 'static/images/login/profle_1.png' : $userInfo['client_head'] . '/132';
+            $info = new stdClass();
+            $info->uid = intval($userInfo['client_id']);
+            $info->uhead = $userInfo['client_head'] == '' ? $this->root . 'static/images/login/profle_1.png' : $userInfo['client_head'] . '/132';
             $info->nickname = $userInfo['client_name'];
-            $info->address  = $userInfo['client_address'];
-            $info->balance  = floatval($userInfo['client_money']);
-            $info->type     = intval($userInfo['client_level']);
+            $info->address = $userInfo['client_address'];
+            $info->balance = floatval($userInfo['client_money']);
+            $info->type = intval($userInfo['client_level']);
+
             return $info;
         } else {
             return false;
@@ -229,10 +246,12 @@ class User extends Model {
      * @param type $uid
      * @return boolean
      */
-    public function getUserEmail($uid, $cache = true) {
+    public function getUserEmail($uid, $cache = true)
+    {
         if (is_numeric($uid)) {
             return $this->Dao->select("client_email")->from(TABLE_USER)->where("client_id = $uid")->getOne($cache);
         }
+
         return false;
     }
 
@@ -242,25 +261,44 @@ class User extends Model {
      * @param int $uid 用户编号
      * @param const $type 操作类型
      */
-    public function mantUserBalance($amount, $uid, $type = self::MANT_BALANCE_ADD) {
-        $uid    = intval($uid);
+    public function mantUserBalance($amount, $uid, $rtype, $type = self::MANT_BALANCE_ADD)
+    {
+        $uid = intval($uid);
         $amount = floatval($amount);
         if ($uid > 0 && $amount > 0) {
             // 更新用户余额
             $result = $this->Dao->update(TABLE_USER)->set([
-                'client_money' => "client_money $type $amount"
+                'client_money' => "client_money $type $amount",
             ], true)->where("client_id = $uid")->exec();
             if ($result) {
                 if ($type === self::MANT_BALANCE_DIS) {
                     $amount = (-1) * $amount;
                 }
                 // 写入用户余额记录
-                return $this->Dao->insert('client_balance_records', ['uid', 'amount'])->values([$uid, $amount])->exec();
+                $remark = '';
+                switch ($rtype) {
+                    case 'rebate':
+                        $remark = "返佣: " . $amount;
+                        break;
+                    case 'deposit':
+                        $remark = '预存: ' . $amount;
+                        break;
+                    case 'withdrawal':
+                        $remark = '提现: ' . $amount;
+                        break;
+                    case 'default':
+                        $remark = '余额支付: ' . $amount;
+                        break;
+                }
+
+                return $this->Dao->insert('client_balance_records', ['uid', 'amount', 'remark', 'rtype', 'rtime'])->values([$uid, $amount, $remark, $rtype, time()])->exec();
             } else {
                 Util::log("余额操作失败" . $this->Dao->getSql());
+
                 return false;
             }
         }
+
         return false;
     }
 
@@ -268,9 +306,11 @@ class User extends Model {
      * 检查用户是否已经注册
      * @param type $openid
      */
-    public function checkUserExt($openid) {
+    public function checkUserExt($openid)
+    {
         $openid = addslashes(trim($openid));
-        $ret    = $this->Db->query("SELECT COUNT(*) AS count FROM `clients` WHERE `client_wechat_openid` = '$openid';");
+        $ret = $this->Db->query("SELECT COUNT(*) AS count FROM `clients` WHERE `client_wechat_openid` = '$openid';");
+
         return $ret[0]['count'] > 0;
     }
 
@@ -280,9 +320,11 @@ class User extends Model {
      * @param type $uid
      * @return type
      */
-    public function genUcToken($uid) {
+    public function genUcToken($uid)
+    {
         global $config;
         $this->loadModel('Secure');
+
         return hash('sha1', $this->getIp() . hash('md4', $uid) . date("Y-m") . $config->wshop_salt);
     }
 
@@ -292,9 +334,10 @@ class User extends Model {
      * @param type $password
      * @return boolean
      */
-    public function userLogin($account, $password) {
+    public function userLogin($account, $password)
+    {
         $password = $this->genUserPassword($password);
-        $ret      = $this->Db->getOneRow("SELECT `client_id` FROM `clients` WHERE (`client_email`= '$account' OR `client_phone` = '$account') AND `client_password` = '$password';");
+        $ret = $this->Db->getOneRow("SELECT `client_id` FROM `clients` WHERE (`client_email`= '$account' OR `client_phone` = '$account') AND `client_password` = '$password';");
         if ($ret !== false && isset($ret['client_id']) && is_numeric($ret['client_id'])) {
             return intval($ret['client_id']);
         } else {
@@ -308,8 +351,10 @@ class User extends Model {
      * @param type $password
      * @return type
      */
-    public function genUserPassword($password) {
+    public function genUserPassword($password)
+    {
         global $config;
+
         return hash('sha256', hash('md4', $password) . $config->wshop_salt . 'pwxd');
     }
 
@@ -318,11 +363,13 @@ class User extends Model {
      * @param type $field
      * @param type $val
      */
-    public function userCheckExt($field, $val) {
+    public function userCheckExt($field, $val)
+    {
         $ret = $this->Db->getOneRow("SELECT COUNT(*) AS count FROM `clients` WHERE `$field` = '$val' AND `client_wechat_openid` <> '';");
         if ($ret['count'] > 0) {
             return true;
         }
+
         return false;
     }
 
@@ -331,7 +378,8 @@ class User extends Model {
      * @param type $openid
      * @return boolean
      */
-    public function userCheckReg($openid) {
+    public function userCheckReg($openid)
+    {
         if (empty($openid)) {
             return false;
         } else {
@@ -340,6 +388,7 @@ class User extends Model {
                 ->from(TABLE_USER)
                 ->where("client_wechat_openid = '$openid'")
                 ->getOne();
+
             return $c > 0;
         }
     }
@@ -350,7 +399,8 @@ class User extends Model {
      * @param type $limit
      * @return boolean
      */
-    public function getUserLikes($openid, $limit) {
+    public function getUserLikes($openid, $limit)
+    {
         if ($openid != '') {
             return $this->Db->query("SELECT po.*,pos.sale_prices FROM `client_product_likes` cpl LEFT JOIN `products_info` po ON po.product_id = cpl.product_id LEFT JOIN `product_onsale` pos ON pos.product_id = cpl.product_id WHERE cpl.openid = '$openid' LIMIT $limit;");
         } else {
@@ -364,7 +414,8 @@ class User extends Model {
      * @param type $productId
      * @return type
      */
-    public function addUserLike($openid, $productId) {
+    public function addUserLike($openid, $productId)
+    {
         return $this->Db->query("INSERT INTO `client_product_likes` (`openid`,`product_id`) VALUES ('$openid','$productId');");
     }
 
@@ -374,7 +425,8 @@ class User extends Model {
      * @param type $productId
      * @return type
      */
-    public function deleteUserLike($openid, $productId) {
+    public function deleteUserLike($openid, $productId)
+    {
         return $this->Db->query("DELETE FROM `client_product_likes` WHERE `openid` = '$openid' AND `product_id` = $productId;");
     }
 
@@ -383,7 +435,8 @@ class User extends Model {
      * @param string $openid
      * @return int
      */
-    public function getUidByOpenId($openid) {
+    public function getUidByOpenId($openid)
+    {
         return intval($this->Db->getOne("SELECT `client_id` FROM `clients` WHERE `client_wechat_openid` = '$openid';"));
     }
 
@@ -392,7 +445,8 @@ class User extends Model {
      * @param type $uid
      * @return type
      */
-    public function getOpenIdByUid($uid) {
+    public function getOpenIdByUid($uid)
+    {
         return $this->Dao->select("client_wechat_openid")->from(TABLE_USER)->where("client_id = " . intval($uid))->getOne();
     }
 
@@ -402,7 +456,8 @@ class User extends Model {
      * @param type $limit
      * @return type
      */
-    public function getUserList($gid = '', $limit = 1000) {
+    public function getUserList($gid = '', $limit = 1000)
+    {
         if ($gid != '') {
             $Ext = " AND `client_level` = $gid";
         } else {
@@ -411,7 +466,7 @@ class User extends Model {
         if ($this->pCookie('comid')) {
             $comid = $this->Util->digDecrypt($this->pCookie('comid'));
             $SQL
-                   = "SELECT
+                = "SELECT
                     cl.*,cl.client_id AS cid,
                     (
                             SELECT
@@ -453,6 +508,7 @@ class User extends Model {
         foreach ($list AS &$l) {
             $l['client_sex'] = $this->Util->sexConv($l['client_sex']);
         }
+
         return $list;
     }
 
@@ -461,8 +517,10 @@ class User extends Model {
      * @param type $openid
      * @return type
      */
-    public function getUserHeadByOpenId($openid, $size = 0) {
+    public function getUserHeadByOpenId($openid, $size = 0)
+    {
         $head = $this->Db->getOne("SELECT client_head FROM `clients` WHERE `client_wechat_openid` = '$openid';");
+
         return $head ? $head . "/$size" : 'static/images/login/profle_1.png';
     }
 
@@ -470,7 +528,8 @@ class User extends Model {
      * 微信进入自动注册
      * @todo 事务？
      */
-    public function wechatAutoReg($openid = '') {
+    public function wechatAutoReg($openid = '')
+    {
         // 检查用户是否注册
         if (!empty($openid) && Controller::inWechat() && !$this->userCheckReg($openid)) {
             // 微信用户资料 UNIONID机制
@@ -505,7 +564,7 @@ class User extends Model {
                 'client_province' => $WechatUserInfo->province,
                 'client_city' => $WechatUserInfo->city,
                 'client_address' => $WechatUserInfo->province . $WechatUserInfo->city,
-                'client_credit' => $reg_credit_default
+                'client_credit' => $reg_credit_default,
             ]);
 
             if ($uid > 0) {
@@ -517,7 +576,7 @@ class User extends Model {
                 // 执行钩子程序
                 (new HookNewUser())->deal([
                     'uid' => $uid,
-                    'openid' => $openid
+                    'openid' => $openid,
                 ]);
 
                 // 红包绑定uid
@@ -544,15 +603,15 @@ class User extends Model {
                         (new HookNewCompanyLinked($this->Controller))->deal([
                             'uid' => $uid,
                             'openid' => $openid,
-                            'companyid' => $comid
+                            'companyid' => $comid,
                         ]);
                     }
                 }
 
                 return true;
-
             } else {
                 Util::log('用户注册失败，信息写入出错' . json_encode($WechatUserInfo));
+
                 // 无法注册
                 return false;
             }
@@ -566,7 +625,8 @@ class User extends Model {
      * @param $uid
      * @param $comid
      */
-    public function bindCompany($uid, $comid) {
+    public function bindCompany($uid, $comid)
+    {
         return $this->Dao->update(TABLE_USER)
             ->set(['client_comid' => $comid])
             ->where("client_id=$uid")
@@ -577,7 +637,8 @@ class User extends Model {
      * 从订单收货地址中提取个人信息
      * @param type $orderId
      */
-    public function importFromOrderAddress($orderId) {
+    public function importFromOrderAddress($orderId)
+    {
         $this->loadModel('mOrder');
         $orderAddr = $this->mOrder->getOrderAddr($orderId);
         if ($orderAddr) {
@@ -587,7 +648,7 @@ class User extends Model {
                     'client_address' => $orderAddr['address'],
                     'client_phone' => $orderAddr['tel_number'],
                     'client_province' => $orderAddr['province'],
-                    'client_city' => $orderAddr['city']
+                    'client_city' => $orderAddr['city'],
                 ))
                 ->where("client_id=" . $orderAddr['client_id'])
                 ->exec();
@@ -600,13 +661,16 @@ class User extends Model {
      * 判断微信用户是否已经关注
      * @return type
      */
-    public function isSubscribed() {
+    public function isSubscribed()
+    {
         if (Controller::inWechat()) {
             $openid = $this->getOpenId();
             $this->loadModel('WechatSdk');
             $WechatUserInfo = WechatSdk::getUserInfo(WechatSdk::getServiceAccessToken(), $openid, true);
+
             return $WechatUserInfo->subscribe == 1;
         }
+
         return false;
     }
 
@@ -615,18 +679,19 @@ class User extends Model {
      * @param int $uid
      * @return float
      */
-    public function getDiscount($uid) {
+    public function getDiscount($uid)
+    {
         $uid = intval($uid);
         if ($uid > 0) {
             $discount = $this->Dao->select('level_discount')
-                    ->from(TABLE_USER)
-                    ->alias('us')
-                    ->leftJoin(TABLE_USER_LEVEL)
-                    ->alias('ul')
-                    ->on("ul.id = us.client_level")
-                    ->where("us.client_id = $uid")
-                    ->limit(1)
-                    ->getOne() / 100;
+                            ->from(TABLE_USER)
+                            ->alias('us')
+                            ->leftJoin(TABLE_USER_LEVEL)
+                            ->alias('ul')
+                            ->on("ul.id = us.client_level")
+                            ->where("us.client_id = $uid")
+                            ->limit(1)
+                            ->getOne() / 100;
             if ($discount > 0 && $discount <= 1) {
                 return $discount;
             } else {
@@ -642,21 +707,23 @@ class User extends Model {
      * @param type $catParent
      * @return type
      */
-    public function getAllGroup() {
+    public function getAllGroup()
+    {
         $group = WechatSdk::getUserGroup();
-        $g     = array();
-        $g[]   = array(
+        $g = array();
+        $g[] = array(
             'dataId' => 0,
-            'name' => '全部用户'
+            'name' => '全部用户',
         );
         foreach ($group as &$l) {
-            $a                = array();
-            $a['name']        = $l['name'];
-            $a['dataId']      = intval($l['id']);
-            $a['open']        = 'false';
+            $a = array();
+            $a['name'] = $l['name'];
+            $a['dataId'] = intval($l['id']);
+            $a['open'] = 'false';
             $a['hasChildren'] = false;
-            $g[]              = $a;
+            $g[] = $a;
         }
+
         return $g;
     }
 
@@ -665,8 +732,10 @@ class User extends Model {
      * @param int $openid
      * @return boolean
      */
-    public function getCompanyId($openid) {
+    public function getCompanyId($openid)
+    {
         $companyCom = intval($this->Db->getOne("SELECT `comid` FROM `company_users` WHERE `openid` = '$openid';"));
+
         return $companyCom > 0 ? $companyCom : 0;
     }
 
@@ -676,7 +745,8 @@ class User extends Model {
      * @param $uid
      * @return array
      */
-    public function getCartData($openId, $uid) {
+    public function getCartData($openId, $uid)
+    {
 
         $this->Db->disableCache();
 
@@ -689,7 +759,7 @@ class User extends Model {
 
         $return = [
             'total' => 0,
-            'supps' => []
+            'supps' => [],
         ];
 
         if (sizeof($datas) > 0) {
@@ -705,26 +775,28 @@ class User extends Model {
                     'product_name',
                     'product_supplier',
                     'product_weight',
-                    'catimg'
-                ])->from(TABLE_PRODUCTS)->where(['product_id' => $data['product_id'],
-                                                 'is_delete' => 0,
-                                                 'product_online' => 1])->getOneRow();
+                    'catimg',
+                ])->from(TABLE_PRODUCTS)->where([
+                    'product_id' => $data['product_id'],
+                    'is_delete' => 0,
+                    'product_online' => 1,
+                ])->getOneRow();
                 if ($product_info) {
                     // 商品规格信息
-                    $product_spec                     = $this->mProductSpec->getProductSpecInfo($data['product_id'], $data['spec_id']);
-                    $product_info['product_id']       = intval($data['product_id']);
-                    $product_info['spec_id']          = intval($data['spec_id']);
-                    $product_info['count']            = intval($data['count']);
+                    $product_spec = $this->mProductSpec->getProductSpecInfo($data['product_id'], $data['spec_id']);
+                    $product_info['product_id'] = intval($data['product_id']);
+                    $product_info['spec_id'] = intval($data['spec_id']);
+                    $product_info['count'] = intval($data['count']);
                     $product_info['product_supplier'] = intval($product_info['product_supplier']);
-                    $product_info['sale_price']       = floatval($product_spec['sale_price'] * $discount);
-                    $product_info['market_price']     = floatval($product_spec['market_price']);
-                    $product_info['instock']          = intval($product_spec['instock']);
-                    $product_info['catimg']           = Util::packProductImgURI($product_info['catimg']);
+                    $product_info['sale_price'] = floatval($product_spec['sale_price'] * $discount);
+                    $product_info['market_price'] = floatval($product_spec['market_price']);
+                    $product_info['instock'] = intval($product_spec['instock']);
+                    $product_info['catimg'] = Util::packProductImgURI($product_info['catimg']);
                     // 商品红包字符串序列 红包id,红包id (获取商品关联红包)
-                    $product_info['envstr']         = $this->Envs->getPdEnvsJoinStr($product_info['product_id']);
-                    $product_info['specname']       = $product_spec['specname'];
+                    $product_info['envstr'] = $this->Envs->getPdEnvsJoinStr($product_info['product_id']);
+                    $product_info['specname'] = $product_spec['specname'];
                     $product_info['product_weight'] = floatval($product_info['product_weight']);
-                    $supplier_id                    = intval($product_info['product_supplier']);
+                    $supplier_id = intval($product_info['product_supplier']);
                     // 供应商信息存在
                     if ($supplier_id > 0) {
                         $supplier = $this->Supplier->get($supplier_id);
@@ -740,7 +812,7 @@ class User extends Model {
                             'supp_id' => $supplier_id,
                             'supp_name' => $supplier['supp_name'],
                             'supp_phone' => $supplier['supp_phone'],
-                            'cart_datas' => []
+                            'cart_datas' => [],
                         ];
                     }
                     // 购物车数据
@@ -754,7 +826,7 @@ class User extends Model {
             }
             $return = [
                 'total' => $product_count,
-                'supps' => array_values($suppliers)
+                'supps' => array_values($suppliers),
             ];
         }
 
@@ -766,12 +838,14 @@ class User extends Model {
      * @param $openid
      * @return array
      */
-    public function getCartDataSimple($openid) {
+    public function getCartDataSimple($openid)
+    {
         $datas = $this->Dao->select("pd.product_id AS pid, spec_id AS spid, count")
             ->from(TABLE_CART)->alias("cart")
             ->leftJoin(TABLE_PRODUCTS)->alias('pd')
             ->on('pd.product_id = cart.product_id')
             ->where("openid = '$openid' AND pd.product_online = 1")->exec();
+
         return $datas;
     }
 
@@ -779,8 +853,10 @@ class User extends Model {
      * 获取用户余额
      * @return float
      */
-    public function getBalance($openid) {
+    public function getBalance($openid)
+    {
         $user = $this->Dao->select('client_money')->from(TABLE_USER)->where("client_wechat_openid = '$openid'")->getOne();
+
         return doubleval($user);
     }
 

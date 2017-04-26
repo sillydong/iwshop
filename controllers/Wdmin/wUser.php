@@ -295,15 +295,29 @@ class wUser extends ControllerAdmin {
      * @param string $key
      */
     public function getUserBalanceRecord() {
-        $pagesize = 25;
-        $page     = $this->getInt('page', 1);
-        $page--;
-        $list  = $this->Dao->select()->from(TABLE_USER_BALANCE_RECORD)->limit($pagesize * $page, $page)->exec();
-        $count = $this->Dao->select()->count(1)->from(TABLE_USER_BALANCE_RECORD)->getOne();
-        $this->echoJson([
-            'list' => $list,
-            'count' => $count
-        ]);
+        $page = Util::digitDefault($this->pGet('page'), 0);
+        $pagesize = Util::digitDefault($this->pGet('pagesize'), 30);
+        if ($page >= 0 && $page <= 1000) {
+            $total = $this->Dao->select('count(1)')->from(TABLE_USER_BALANCE_RECORD)->getOne();
+            if ($total > 0) {
+                $ret = $this->Dao->select('br.*,us.client_name,us.client_head,us.client_phone')
+                    ->from(TABLE_USER_BALANCE_RECORD)->alias("br")
+                    ->leftJoin(TABLE_USER)->alias('us')
+                    ->on('us.client_id=br.uid')
+                    ->orderby('id DESC')
+                    ->limit($page * $pagesize, $pagesize)
+                    ->exec();
+            } else {
+                $ret = [];
+            }
+
+            $this->echoMsg(0, [
+                'total' => $total,
+                'list' => $ret,
+            ]);
+        } else {
+            $this->echoFail();
+        }
     }
 
     /**
@@ -312,15 +326,38 @@ class wUser extends ControllerAdmin {
      * @param string $key
      */
     public function getUserCreditRecord() {
-        $pagesize = 25;
-        $page     = $this->getInt('page', 1);
-        $page--;
-        $list  = $this->Dao->select()->from(TABLE_USER_CREDIT_RECORD)->limit($pagesize * $page, $page)->exec();
-        $count = $this->Dao->select()->count(1)->from(TABLE_USER_CREDIT_RECORD)->getOne();
-        $this->echoJson([
-            'list' => $list,
-            'count' => $count
-        ]);
+        $page = Util::digitDefault($this->pGet('page'),0);
+        $pagesize=Util::digitDefault($this->pGet('pagesize'),30);
+        if($page>=0 && $page<=1000){
+            $total = $this->Dao->select('count(1)')->from(TABLE_USER_CREDIT_RECORD)->getOne();
+            if($total>0){
+                $ret = $this->Dao->select('cr.*,us.client_name,us.client_head,us.client_phone')
+                    ->from(TABLE_USER_CREDIT_RECORD)->alias("cr")
+                    ->leftJoin(TABLE_USER)->alias('us')
+                    ->on('us.client_id=cr.uid')
+                    ->orderby('id DESC')
+                    ->limit($page * $pagesize, $pagesize)
+                    ->exec();
+                foreach ($ret as &$x){
+                    switch($x['reltype']){
+                        case 0:
+                            $x['reltype']='下单';
+                            break;
+                        case 1:
+                            $x['reltype']='签到';
+                    }
+                }
+            }else{
+                $ret=[];
+            }
+            
+            $this->echoMsg(0,[
+                'total'=>$total,
+                'list'=>$ret,
+            ]);
+        }else{
+            $this->echoFail();
+        }
     }
 
 }

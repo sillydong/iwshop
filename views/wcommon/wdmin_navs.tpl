@@ -64,7 +64,6 @@
         <a class='cap-nav-item' href='javascript:;' data-page="settings_envs" data-nav="customers">红包设置</a>
         <a class='cap-nav-item' href='javascript:;' data-page="envsRobList" data-nav="customers">限抢红包</a>
         <a class='cap-nav-item' href='javascript:;' data-page="credit_exchange" data-nav="settings">积分兑换</a>
-                   <a class='cap-nav-item' href='javascript:;' data-page="discount_code_list" data-nav="settings">优惠码</a>
     </div>
 {/if}
 
