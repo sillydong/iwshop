@@ -97,7 +97,7 @@ class mOrder extends Model {
 			
             // 订单备注
             if (isset($params['remark'])) {
-                $params['remark'] = mysql_real_escape_string(trim($params['remark']));
+                $params['remark'] = htmlspecialchars(trim($params['remark']));
             } else {
                 $params['remark'] = '';
             }

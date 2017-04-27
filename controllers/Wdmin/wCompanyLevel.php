@@ -69,6 +69,7 @@ class wCompanyLevel extends ControllerAdmin
                 $this->echoMsg(-1);
             }
         } else {
+            unset($data['id']);
             if ($this->mCompanyLevel->create($data)) {
                 $this->echoMsg(0);
             } else {

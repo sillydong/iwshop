@@ -210,6 +210,34 @@ class User extends Model
             return false;
         }
     }
+ /**
+     * 对用户充值积分
+     * @param $uid
+     * @param $credit
+     * @param $relid
+     * @param $reltype
+     */
+    public function CaddCredit($uid, $credit, $relid = 0, $reltype = 0)
+    {
+        $this->loadModel('UserCredit');
+        if ($uid > 0 && $credit > 0) {
+            $this->Db->transtart();
+            try {
+                $this->UserCredit->add($uid, $credit);
+                $this->UserCredit->record($uid, $credit, $reltype, $relid, '订单赠送积分' . $credit);
+                $this->Db->transcommit();
+
+                return true;
+            } catch (Exception $ex) {
+                $this->Db->transrollback();
+                Util::log("积分操作失败: " . $ex->getMessage());
+
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 
     /**
      * 获取用户信息

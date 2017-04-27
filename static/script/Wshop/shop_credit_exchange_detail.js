@@ -43,7 +43,7 @@ require(['config'], function (config) {
 
         // 加载购物车数据
         o.loadCartData = function () {
-             // 加载收货地址缓存数据
+            // 加载收货地址缓存数据
             localStorageAddrCache();
 
         };
@@ -56,7 +56,7 @@ require(['config'], function (config) {
         function localStorageAddrCache() {
             if (o.Storage && o.Storage.getItem('addr-set') === "1" && o.Storage.getItem('orderAddress')) {
                 expressData = JSON.parse(o.Storage.getItem('orderAddress'));
-                if (expressData.proviceFirstStageName !== undefined) {
+                if (typeof expressData.provinceName != 'undefined') {
                     // 收货地址加载标记
                     window.addressloaded = true;
                     // 显示收货地址
@@ -75,16 +75,16 @@ require(['config'], function (config) {
          */
         function loadTestAddrData() {
             var res = {
-                proviceFirstStageName: '广东',
-                addressCitySecondStageName: '广州市',
-                addressCountiesThirdStageName: '天河区',
-                addressDetailInfo: '新燕花园三期1201 新燕花园三期1201 新燕花园三期1201 新燕花园三期1201',
-                addressPostalCode: 510006,
+                provinceName: '广东',
+                cityName: '广州市',
+                countryName: '天河区',
+                detailInfo: '新燕花园三期1201 ',
+                postalCode: 510006,
                 telNumber: 18565518404,
                 userName: '陈永才'
             };
-            res.Address = res.proviceFirstStageName + res.addressCitySecondStageName + res.addressCountiesThirdStageName + res.addressDetailInfo;
-            res.err_msg = 'edit_address:ok';
+            res.Address = res.provinceName + res.cityName + res.countryName + res.detailInfo;
+            res.errMsg = 'openAddress:ok';
             addAddressCallback(res);
         }
 
@@ -96,10 +96,12 @@ require(['config'], function (config) {
          * @returns {undefined}
          */
         function addAddressCallback(res) {
-            if (res.err_msg === 'edit_address:ok') {
+
+            if (res.errMsg === 'openAddress:ok') {
                 window.expressData = res;
-                expressData.Address = expressData.proviceFirstStageName + expressData.addressCitySecondStageName + expressData.addressCountiesThirdStageName + expressData.addressDetailInfo;
+                expressData.Address = expressData.provinceName + expressData.cityName + expressData.countryName + expressData.detailInfo;
                 res.Address = expressData.Address;
+                
                 // 缓存到Storage
                 o.Storage.setItem('addr-set', '1');
                 o.Storage.setItem('orderAddress', JSON.stringify(res));
@@ -133,11 +135,11 @@ require(['config'], function (config) {
         function fnSelectAddr() {
             if ($('#addrOn').val() === '1') {
                 wx.openAddress({
-                                   success: function (res) {
-                                       // 用户成功拉出地址 
-                                       addAddressCallback(res);
-                                   },
-                               });
+                    success: function (res) {
+                        // 用户成功拉出地址 
+                        addAddressCallback(res);
+                    },
+                });
             } else {
                 alert("授权失败");
                 // 授权失败
@@ -164,11 +166,11 @@ require(['config'], function (config) {
 
             if (false === window.addressloaded && typeof wx !== "undefined") {
                 wx.openAddress({
-                                   success: function (res) {
-                                       // 用户成功拉出地址 
-                                       addAddressCallback(res);
-                                   },
-                               });
+                    success: function (res) {
+                     // 用户成功拉出地址 
+                       addAddressCallback(res);
+                    },
+                });
                 return false;
             }
 
@@ -178,7 +180,7 @@ require(['config'], function (config) {
                     // [HttpPost]
                     $.post('?/Uc/credit_exchange_confirm/', {
                         pid     : pid,
-                        addrData: expressData
+                        addrData: JSON.stringify(expressData)
                     }, function (r) {
                         if (r.ret_code === 0) {
                             alert('兑换成功');

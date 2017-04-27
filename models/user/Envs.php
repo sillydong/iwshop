@@ -210,13 +210,28 @@ class Envs extends Model {
      * @param type $id
      * @return type
      */
+	  public function delete($id) {
+         
+		$this->Dao->delete()->from(TABLE_USER_ENVL_TYPE)->where("id = $id")->exec();
+		//自动关注红包删除
+		$this->Dao->delete()->from('client_autoenvs')->where("envid = $id")->exec();
+		//旧的删除
+		$this->Dao->delete()->from('client_envelopes')->where("envid = $id")->exec();
+		//自动送红包删除
+		$envid = $this->Db->getOne("SELECT `value` FROM `wshop_settings` WHERE `key` = 'auto_envs';");
+		if ($envid == $id){
+			$this->Dao->update('wshop_settings')->set(['value' => 0])->where("key = 'auto_envs'")->exec();
+		}
+		return true;
+    }
+/*
     public function delete($id) {
         return $this->Dao->delete()
             ->from(TABLE_USER_ENVL_TYPE)
             ->where("id = $id")
             ->exec();
     }
-
+*/
     /**
      * 获取红包数量
      * @param $uid

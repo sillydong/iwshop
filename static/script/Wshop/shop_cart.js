@@ -405,7 +405,7 @@ require(['config'], function (config) {
         function localStorageAddrCache() {
             if (o.Storage && o.Storage.getItem('addr-set') === "1" && o.Storage.getItem('orderAddress')) {
                 expressData = JSON.parse(o.Storage.getItem('orderAddress'));
-                if (expressData.proviceFirstStageName !== undefined) {
+                if (typeof expressData.provinceName != 'undefined') {
                     // 收货地址加载标记
                     window.addressloaded = true;
                     // 显示收货地址
@@ -425,7 +425,7 @@ require(['config'], function (config) {
                 provinceName: '广东',
                 cityName: '广州市',
                 countryName: '天河区',
-                detailInfo: '新燕花园三期1201 新燕花园三期1201 新燕花园三期1201 新燕花园三期1201',
+                detailInfo: '新燕花园三期1201',
                 postalCode: 510006,
                 telNumber: 18565518404,
                 userName: '陈永才'
@@ -675,22 +675,23 @@ require(['config'], function (config) {
             $('#extra-field').hide();
         }
 
-        /**
-         * 获取收货地址
+
+		 /**
+         * 修复获取收货地址
          * @returns {undefined}
          */
-        function fnSelectAddr() {
-            if ($('#addrOn').val() === '1') {
-                wx.openAddress({
-                                   success: function (res) {
-                                       // 用户成功拉出地址 
-                                       addAddressCallback(res);
-                                       },
-                                   });
-            } else {
-                // 授权失败
-            }
-        }
+		function fnSelectAddr() {
+			if ($('#addrOn').val() === '1') {
+				wx.openAddress({
+					success: function (res) {
+						// 用户成功拉出地址 
+						addAddressCallback(res);
+					},
+				});
+			} else {
+				// 授权失败
+			}
+		}
 
         /**
          * 发起微信支付
@@ -725,11 +726,11 @@ require(['config'], function (config) {
                 // 微信支付开通
                 if (false === window.addressloaded && typeof wx !== "undefined") {
                     wx.openAddress({
-                                       success: function (res) {
-                                           // 用户成功拉出地址 
-                                           addAddressCallback(res);
-                                       },
-                                   });
+                        success: function (res) {
+                            // 用户成功拉出地址 
+                            addAddressCallback(res);
+                        },
+                    });
                     return false;
                 }
 
@@ -760,7 +761,7 @@ require(['config'], function (config) {
                 // 生成一个订单
                 if (false === orderId) {
                     $.post($('#paycallorderurl').val(), {
-                        addrData: expressData,
+                        addrData: JSON.stringify(expressData),
                         balancePay: balancePay,
                         expfee: o.ExpFee,
                         remark: $('#remark').val(),
@@ -862,11 +863,11 @@ require(['config'], function (config) {
                 // 微信支付开通
                 if (false === window.addressloaded && typeof wx !== "undefined") {
                     wx.openAddress({
-                                       success: function (res) {
-                                           // 用户成功拉出地址 
-                                           addAddressCallback(res);
-                                       },
-                                   });
+                            success: function (res) {
+                                // 用户成功拉出地址 
+                                addAddressCallback(res);
+                            },
+                    });
                     return false;
                 }
 
@@ -890,7 +891,7 @@ require(['config'], function (config) {
                 // 生成一个订单
                 if (false === orderId) {
                     $.post($('#paycallorderurl').val(), {
-                        addrData: expressData,
+                        addrData: expressData.Address,
                         balancePay: $('#cart-balance-check')[0].checked ? 1 : 0,
                         expfee: o.ExpFee,
                         remark: $('#remark').val(),

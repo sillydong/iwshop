@@ -55,7 +55,7 @@
         <span class="spread-item"
               onclick="location.href = '?/Uc/credit_exchange';"><b>{$userinfo.client_credit}</b>积分</span>
         <span class="spread-item"
-              onclick="location.href = '?/Uc/balance';"><b>&yen;{$userinfo.client_money}</b>零钱</span>
+              onclick="location.href = '?/Uc/balance';"><b>&yen;{$userinfo.client_money}</b>余额</span>
         <span class="spread-item" onclick="location.href = '?/Uc/envslist';"><b>{$count_envs}</b>红包</span>
         <span class="spread-item" onclick="location.href = '?/Uc/uc_likes';"><b>{$count_like}</b>收藏</span>
     </div>
